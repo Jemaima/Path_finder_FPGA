@@ -1,0 +1,5 @@
+PLL_Name	system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst|altpll:altpll_component|pll_40_mhz_altpll:auto_generated|pll1
+PLLJITTER	35
+PLLSPEmax	84
+PLLSPEmin	-53
+
