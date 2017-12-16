@@ -168,7 +168,7 @@ begin
 	end	
 	else if (cnt_v == 10'd287 && cnt_h==10'd701)
 	begin
-		curPose[9:0]<=10'd15;
+		curPose[9:0]<=10'd20;
 		curPose[19:10]<=stLeft[9:1]+stRight[9:1] + 10'd1;
 		curPose[23:20]<=4'b1000; 
 		mazeParametersDefined <= 1'b1;  // maze defenition complete
@@ -205,11 +205,93 @@ if (mazeParametersDefined)
 		//outdataReg<={8{window[center][center]}};
 		outdataReg <={2'b00,{6{video_data_in_bin}}};
 	
-	for (k=0;k<30;k=k+1)
-	for (l=0;l<30;l=l+1)
+	
+	
+	
+	
+	for (k=0;k<5;k=k+1)
+	for (l=0;l<5;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[0][0]}}};	
+	
+	for (k=6;k<10;k=k+1)
+	for (l=0;l<5;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[0][center]}}};	
+	
+	for (k=11;k<15;k=k+1)
+	for (l=0;l<5;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[0][31]}}};	
+	
+	for (k=16;k<20;k=k+1)
+	for (l=0;l<5;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[0][32]}}};
+//======
+	for (k=0;k<5;k=k+1)
+	for (l=6;l<10;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[center][0]}}};	
+	
+	for (k=6;k<10;k=k+1)
+	for (l=6;l<10;l=l+1)
 	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
 		outdataReg<={1'b1,{7{window[center][center]}}};	
+	
+	for (k=11;k<15;k=k+1)
+	for (l=6;l<10;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[center][31]}}};	
+	
+	for (k=16;k<20;k=k+1)
+	for (l=6;l<10;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[center][32]}}};	
+//======
+	for (k=0;k<5;k=k+1)
+	for (l=11;l<15;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[31][0]}}};	
+	
+	for (k=6;k<10;k=k+1)
+	for (l=11;l<15;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[31][center]}}};	
+	
+	for (k=11;k<15;k=k+1)
+	for (l=11;l<15;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[31][31]}}};	
+	
+	for (k=16;k<20;k=k+1)
+	for (l=11;l<15;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[31][32]}}};	
+	
+//======
+	for (k=0;k<5;k=k+1)
+	for (l=16;l<21;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[32][0]}}};	
+	
+	for (k=6;k<10;k=k+1)
+	for (l=16;l<21;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[32][center]}}};	
+	
+	for (k=11;k<15;k=k+1)
+	for (l=16;l<21;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[32][31]}}};	
+	
+	for (k=16;k<20;k=k+1)
+	for (l=16;l<21;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[32][32]}}};	
+		
 	end
+	
 	
 assign video_data_ready = video_data_valid;
 assign video_data_out = outdataReg; 
