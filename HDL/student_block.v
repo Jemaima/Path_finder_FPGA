@@ -151,6 +151,20 @@ always @(posedge clk)
 	
 	end
 
+	
+//=======================================================
+// Node states
+//=======================================================	
+	
+wire isStreight;
+wire leftTurn;
+wire rightTurn;
+
+assign emptyConers =(!window[0][0] && !window[32][0] && !window[0][32] && !window[32][32]);
+assign isStreight = (window[0][center] && window[32][center] && !window[center][0] && !window[center][32])
+					   ||(!window[0][center] && !window[32][center] && window[center][0] && window[center][32]);
+
+
 //=======================================================
 //First frame processing
 //=======================================================
@@ -204,91 +218,93 @@ if (mazeParametersDefined)
 	else
 		//outdataReg<={8{window[center][center]}};
 		outdataReg <={2'b00,{6{video_data_in_bin}}};
-	
-	
-	
-	
-	
-	for (k=0;k<5;k=k+1)
-	for (l=0;l<5;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[0][0]}}};	
-	
-	for (k=6;k<10;k=k+1)
-	for (l=0;l<5;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[0][center]}}};	
-	
-	for (k=11;k<15;k=k+1)
-	for (l=0;l<5;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[0][31]}}};	
-	
-	for (k=16;k<20;k=k+1)
-	for (l=0;l<5;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[0][32]}}};
-//======
-	for (k=0;k<5;k=k+1)
-	for (l=6;l<10;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[center][0]}}};	
-	
-	for (k=6;k<10;k=k+1)
-	for (l=6;l<10;l=l+1)
+	for (k=0;k<32;k=k+1)
+	for (l=0;l<32;l=l+1)
 	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
 		outdataReg<={1'b1,{7{window[center][center]}}};	
 	
-	for (k=11;k<15;k=k+1)
-	for (l=6;l<10;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[center][31]}}};	
 	
-	for (k=16;k<20;k=k+1)
-	for (l=6;l<10;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[center][32]}}};	
-//======
-	for (k=0;k<5;k=k+1)
-	for (l=11;l<15;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[31][0]}}};	
 	
-	for (k=6;k<10;k=k+1)
-	for (l=11;l<15;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[31][center]}}};	
-	
-	for (k=11;k<15;k=k+1)
-	for (l=11;l<15;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[31][31]}}};	
-	
-	for (k=16;k<20;k=k+1)
-	for (l=11;l<15;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[31][32]}}};	
-	
-//======
-	for (k=0;k<5;k=k+1)
-	for (l=16;l<21;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[32][0]}}};	
-	
-	for (k=6;k<10;k=k+1)
-	for (l=16;l<21;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[32][center]}}};	
-	
-	for (k=11;k<15;k=k+1)
-	for (l=16;l<21;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[32][31]}}};	
-	
-	for (k=16;k<20;k=k+1)
-	for (l=16;l<21;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[32][32]}}};	
+//	for (k=0;k<5;k=k+1)
+//	for (l=0;l<5;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[0][0]}}};	
+//	
+//	for (k=6;k<10;k=k+1)
+//	for (l=0;l<5;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[0][center]}}};	
+//	
+//	for (k=11;k<15;k=k+1)
+//	for (l=0;l<5;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[0][31]}}};	
+//	
+//	for (k=16;k<20;k=k+1)
+//	for (l=0;l<5;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[0][32]}}};
+////======
+//	for (k=0;k<5;k=k+1)
+//	for (l=6;l<10;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[center][0]}}};	
+//	
+//	for (k=6;k<10;k=k+1)
+//	for (l=6;l<10;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[center][center]}}};	
+//	
+//	for (k=11;k<15;k=k+1)
+//	for (l=6;l<10;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[center][31]}}};	
+//	
+//	for (k=16;k<20;k=k+1)
+//	for (l=6;l<10;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[center][32]}}};	
+////======
+//	for (k=0;k<5;k=k+1)
+//	for (l=11;l<15;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[31][0]}}};	
+//	
+//	for (k=6;k<10;k=k+1)
+//	for (l=11;l<15;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[31][center]}}};	
+//	
+//	for (k=11;k<15;k=k+1)
+//	for (l=11;l<15;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[31][31]}}};	
+//	
+//	for (k=16;k<20;k=k+1)
+//	for (l=11;l<15;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[31][32]}}};	
+//	
+////======
+//	for (k=0;k<5;k=k+1)
+//	for (l=16;l<21;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[32][0]}}};	
+//	
+//	for (k=6;k<10;k=k+1)
+//	for (l=16;l<21;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[32][center]}}};	
+//	
+//	for (k=11;k<15;k=k+1)
+//	for (l=16;l<21;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[32][31]}}};	
+//	
+//	for (k=16;k<20;k=k+1)
+//	for (l=16;l<21;l=l+1)
+//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+//		outdataReg<={1'b1,{7{window[32][32]}}};	
 		
 	end
 	
