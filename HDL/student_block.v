@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 module student_block(
 	input clk,
-	input reset, //сброс
+	input reset, 
 	input [1:0] mode, // 
-	input video_frame_valid,  		//новый полукадр
-	input video_line_valid,  		//начало новой строки
-	input video_data_valid,  		//новый пиксель
+	input video_frame_valid,  		// is frame
+	input video_line_valid,  		// is line
+	input video_data_valid,  		// is pxl
 	input [7:0] video_data_in,   	// img before binarization
 	input [19:0] video_address,
 	output video_data_ready,
@@ -19,8 +19,8 @@ module student_block(
 
 reg mazeParametersDefined = 1'b0;
 reg [4:0] path_width = 5'd0;
-parameter [9:0] center=10'd16;
-parameter [9:0] windowSize = 10'd33;	
+parameter center=16;
+parameter windowSize = 33;	
 	
 //=======================================================
 // initial scan windows generation
@@ -28,11 +28,7 @@ parameter [9:0] windowSize = 10'd33;
 
 reg [7:0] outdataReg = 8'd0; 
 reg [32:0] window [32:0];
-reg [31:0] path [32:0];
-reg [7:0] n_node = 8'd0;
-
-wire [7:0] currentNode;
-assign currentNode = n_node;
+reg [25:0] curPose = 25'd0;
 
 generate
 	genvar i;
@@ -41,12 +37,11 @@ generate
 		initial
 			begin
 			window[i] = {33{1'b0}}; // initial each column = 0
-			path[i] = {32{1'b1}};
 			end
 		always @(posedge clk)
 		if (!video_frame_valid)
 		begin
-		window[i] = {33{1'b0}}; // initial each column = 0
+		window[i] = {33{1'b0}}; // reset each column = 0
 		end
 	end
 endgenerate 
@@ -98,7 +93,7 @@ end
 //=======================================================
 
 wire video_data_in_bin;
-assign video_data_in_bin = (video_data_in>8'd200)?1'b1:1'b0;
+assign video_data_in_bin = (video_data_in>8'd150)?1'b1:1'b0;
 
 //=======================================================
 // detection edges to find first node
@@ -143,7 +138,7 @@ fifo_1kx32 fifo_1kx32_inst1(
 always @(posedge clk)
 	if (!video_frame_valid)
 		fifo_enable<=2'b01;
-	else if (lineStart)   //  считает строки
+	else if (lineStart)   // read access
 		fifo_enable <=2'b11;
 	
 reg [5:0] j = 6'd0;//	
@@ -151,7 +146,7 @@ always @(posedge clk)
 	if(video_data_valid && fifo_enable[1])
 	begin
 	window[0] <= {video_data_in,fifo_dout};
-	for (j=1;j<32;j=j+1)
+	for (j=1;j<33;j=j+1)
 		window[j] <= window[j-1];
 	
 	end
@@ -173,40 +168,47 @@ begin
 	end	
 	else if (cnt_v == 10'd287 && cnt_h==10'd701)
 	begin
-		path[n_node][9:0]<=10'd15;
-		path[n_node][19:10]<=stLeft[9:1]+stRight[9:1] + 10'd1;
-		path[n_node][21:20]<=2'd0;      // go down at first
-		path[n_node+1]<=path[n_node];
-		n_node = n_node + 1'b1;
+		curPose[9:0]<=10'd15;
+		curPose[19:10]<=stLeft[9:1]+stRight[9:1] + 10'd1;
+		curPose[23:20]<=4'b1000; 
 		mazeParametersDefined <= 1'b1;  // maze defenition complete
 	end
 	outdataReg <={1'b0,{7{video_data_in_bin}}};
 end
-
-//=======================================================
-// Check Streight
-//=======================================================
-
-
-
 	
 //=======================================================
 // Define next position
 //=======================================================
 
+always @(posedge clk)
+	if(frameStart)
+	case (curPose[23:20])
+	4'b1000:curPose[9:0] = curPose[9:0]+10'd8;
+	4'b0100:curPose[9:0] = curPose[19:10]-10'd8;
+	4'b0010:curPose[9:0] = curPose[9:0]-10'd8;
+	4'b0001:curPose[9:0] = curPose[19:10]+10'd8;
+	endcase
+	
 //=======================================================
 // Draw agent
 //=======================================================
+integer k,l;
+
 always @(posedge clk)
 if (mazeParametersDefined)
 	begin
-	if (cnt_v > path[0][9:0]- 10'd5 && cnt_v < path[0][9:0] + 10'd5 && cnt_h > path[0][19:10]- 10'd5 && cnt_h < path[0][19:10] + 10'd5)
+	if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && cnt_h < curPose[19:10] + 10'd5)
 		begin
-			outdataReg<=8'd255;
+			outdataReg<=8'd200;
 		end
 	else
-		outdataReg<={8{window[0][0]}};
-		//outdataReg <={1'b0,{7{video_data_in_bin}}};
+		//outdataReg<={8{window[center][center]}};
+		outdataReg <={2'b00,{6{video_data_in_bin}}};
+	
+	for (k=0;k<30;k=k+1)
+	for (l=0;l<30;l=l+1)
+	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
+		outdataReg<={1'b1,{7{window[center][center]}}};	
 	end
 	
 assign video_data_ready = video_data_valid;

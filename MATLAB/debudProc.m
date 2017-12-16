@@ -1,5 +1,5 @@
 
-testImageRaw = double(rgb2gray(imread('mazeImage.jpg'))); 
+testImageRaw = double(rgb2gray(imread('maze_1.jpg'))); 
 
 testImageRawField = [testImageRaw(1:2:end,:); testImageRaw(2:2:end,:)];
 
@@ -10,7 +10,7 @@ fclose(fileID2);
 dataFPGA = C{1,1};
 vsize = 576;
 hsize = 702;
-nShots = 2; 
+nShots = 1; 
 procImageHF = double(zeros(nShots,vsize,hsize));
 outImage = testImageRawField;
 for z = 1:nShots

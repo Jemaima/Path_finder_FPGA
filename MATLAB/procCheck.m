@@ -1,6 +1,6 @@
 function [ checkValue ] = procCheck( mode, type )
 
-testImageRaw = double(rgb2gray(imread('mazeImage.jpg'))); 
+testImageRaw = double(rgb2gray(imread('maze_1.jpg'))); 
 
 testImageRawField = [testImageRaw(1:2:end,:); testImageRaw(2:2:end,:)];
 
