@@ -3,12 +3,12 @@ module student_block(
 	input clk,
 	input reset, 
 	input [1:0] mode, // 
-	input video_frame_valid,  		// is frame
-	input video_line_valid,  		// is line
-	input video_data_valid,  		// is pxl
-	input [7:0] video_data_in,   	// img before binarization
-	input [19:0] video_address,
-	output video_data_ready,
+	input video_frame_valid,  		// is frame ограничивает единицей считываем кадр
+	input video_line_valid,  		// is line ща пойдет линия
+	input video_data_valid,  		// is pxl ща пойдет кадр
+	input [7:0] video_data_in,   	// img before binarization пишем сюда пиксели
+	input [19:0] video_address,	// не нужно
+	output video_data_ready,		// данные обработались??
 	output[7:0] video_data_out
 	);
 
@@ -17,10 +17,10 @@ module student_block(
 // MAIN PARAMETERS
 //=======================================================
 
-reg mazeParametersDefined = 1'b0;
-reg [4:0] path_width = 5'd0;
-parameter center=16;
-parameter windowSize = 33;	
+reg mazeParametersDefined = 1'b0;		/// вход в лабиринт
+reg [4:0] path_width = 5'd0;				/// ширина пути
+parameter center=16;							/// центр кадра
+parameter windowSize = 33;					/// размер кадра??????????
 	
 //=======================================================
 // initial scan windows generation
@@ -114,16 +114,16 @@ assign posEdgeMaze = ~edgeMaze_z & video_data_in_bin;
 //FIFO organization
 //=======================================================
 
-reg [1:0] fifo_enable = 2'd1;
+reg [1:0] fifo_enable = 2'b01;
 
 wire fifo_sclr;
 wire fifo_wrreg,fifo_rdreg;
 wire [31:0] fifo_din,fifo_dout;
 
 assign fifo_sclr = ~video_frame_valid;
-assign fifo_wrreq = video_data_valid &fifo_enable[0];
-assign fifo_rdreq = video_data_valid &fifo_enable[1];
-assign fifo_din = {video_data_in_bin,window[0][31:1]};
+assign fifo_wrreq = video_data_valid & fifo_enable[0];
+assign fifo_rdreq = video_data_valid & fifo_enable[1];
+assign fifo_din = window[0][31:0];
 	
 fifo_1kx32 fifo_1kx32_inst1(
 	.clock(clk),
@@ -138,32 +138,31 @@ fifo_1kx32 fifo_1kx32_inst1(
 always @(posedge clk)
 	if (!video_frame_valid)
 		fifo_enable<=2'b01;
-	else if (lineStart)   // read access
+	else if (cnt_h==701)   // read access
 		fifo_enable <=2'b11;
-	
-reg [5:0] j = 6'd0;//	
+
+reg [5:0] j = 6'd0; 	
 always @(posedge clk)
-	if(video_data_valid && fifo_enable[1])
+	if(video_data_valid)
 	begin
-	window[0] <= {video_data_in,fifo_dout};
-	for (j=1;j<33;j=j+1)
-		window[j] <= window[j-1];
+	for (j=32;j>0;j=j-1)
+		window[j][32:0] <= window[j-1][32:0];	
 	
+	window[0][32:0] <= {fifo_dout,video_data_in_bin};
 	end
 
-	
 //=======================================================
 // Node states
 //=======================================================	
-	
+
+wire onLastPose;	
 wire isStreight;
-wire leftTurn;
-wire rightTurn;
+wire emptyConers;
 
-assign emptyConers =(!window[0][0] && !window[32][0] && !window[0][32] && !window[32][32]);
-assign isStreight = (window[0][center] && window[32][center] && !window[center][0] && !window[center][32])
-					   ||(!window[0][center] && !window[32][center] && window[center][0] && window[center][32]);
-
+//assign onLastPose = (cnt_h-center == curPose[19:10]) & (cnt_v-center == curPose[9:0]);
+assign emptyConers =(!window[0][0] & !window[32][0] & !window[0][32] && !window[32][32]);
+assign isStreight = (window[0][center] & window[32][center] & !window[center][0] & !window[center][32])
+					   ||(!window[0][center] & !window[32][center] & window[center][0] & window[center][32]);
 
 //=======================================================
 //First frame processing
@@ -180,7 +179,7 @@ begin
 		stLeft <=posEdgeMaze?cnt_h:stLeft;
 		stRight <=negEdgeMaze?cnt_h:stRight;
 	end	
-	else if (cnt_v == 10'd287 && cnt_h==10'd701)
+	else if (cnt_v == 10'd287 && cnt_h==10'd701) /// если конец строки и последняя строка
 	begin
 		curPose[9:0]<=10'd20;
 		curPose[19:10]<=stLeft[9:1]+stRight[9:1] + 10'd1;
@@ -197,10 +196,10 @@ end
 always @(posedge clk)
 	if(frameStart)
 	case (curPose[23:20])
-	4'b1000:curPose[9:0] = curPose[9:0]+10'd8;
-	4'b0100:curPose[9:0] = curPose[19:10]-10'd8;
-	4'b0010:curPose[9:0] = curPose[9:0]-10'd8;
-	4'b0001:curPose[9:0] = curPose[19:10]+10'd8;
+	4'b1000:curPose[9:0] = curPose[9:0]+10'd18;
+	4'b0100:curPose[9:0] = curPose[19:10]-10'd18;
+	4'b0010:curPose[9:0] = curPose[9:0]-10'd18;
+	4'b0001:curPose[9:0] = curPose[19:10]+10'd18;
 	endcase
 	
 //=======================================================
@@ -216,96 +215,7 @@ if (mazeParametersDefined)
 			outdataReg<=8'd200;
 		end
 	else
-		//outdataReg<={8{window[center][center]}};
-		outdataReg <={2'b00,{6{video_data_in_bin}}};
-	for (k=0;k<32;k=k+1)
-	for (l=0;l<32;l=l+1)
-	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-		outdataReg<={1'b1,{7{window[center][center]}}};	
-	
-	
-	
-//	for (k=0;k<5;k=k+1)
-//	for (l=0;l<5;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[0][0]}}};	
-//	
-//	for (k=6;k<10;k=k+1)
-//	for (l=0;l<5;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[0][center]}}};	
-//	
-//	for (k=11;k<15;k=k+1)
-//	for (l=0;l<5;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[0][31]}}};	
-//	
-//	for (k=16;k<20;k=k+1)
-//	for (l=0;l<5;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[0][32]}}};
-////======
-//	for (k=0;k<5;k=k+1)
-//	for (l=6;l<10;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[center][0]}}};	
-//	
-//	for (k=6;k<10;k=k+1)
-//	for (l=6;l<10;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[center][center]}}};	
-//	
-//	for (k=11;k<15;k=k+1)
-//	for (l=6;l<10;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[center][31]}}};	
-//	
-//	for (k=16;k<20;k=k+1)
-//	for (l=6;l<10;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[center][32]}}};	
-////======
-//	for (k=0;k<5;k=k+1)
-//	for (l=11;l<15;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[31][0]}}};	
-//	
-//	for (k=6;k<10;k=k+1)
-//	for (l=11;l<15;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[31][center]}}};	
-//	
-//	for (k=11;k<15;k=k+1)
-//	for (l=11;l<15;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[31][31]}}};	
-//	
-//	for (k=16;k<20;k=k+1)
-//	for (l=11;l<15;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[31][32]}}};	
-//	
-////======
-//	for (k=0;k<5;k=k+1)
-//	for (l=16;l<21;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[32][0]}}};	
-//	
-//	for (k=6;k<10;k=k+1)
-//	for (l=16;l<21;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[32][center]}}};	
-//	
-//	for (k=11;k<15;k=k+1)
-//	for (l=16;l<21;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[32][31]}}};	
-//	
-//	for (k=16;k<20;k=k+1)
-//	for (l=16;l<21;l=l+1)
-//	if (cnt_h-k==curPose[19:10] && cnt_v-l==curPose[9:0])
-//		outdataReg<={1'b1,{7{window[32][32]}}};	
-		
+		outdataReg<={7{window[center][center]}};
 	end
 	
 	
