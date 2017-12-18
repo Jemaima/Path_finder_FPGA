@@ -147,7 +147,6 @@ always @(posedge clk)
 	begin
 	for (j=32;j>0;j=j-1)
 		window[j][32:0] <= window[j-1][32:0];	
-	
 	window[0][32:0] <= {fifo_dout,video_data_in_bin};
 	end
 
@@ -159,10 +158,18 @@ wire onLastPose;
 wire isStreight;
 wire emptyConers;
 
-//assign onLastPose = (cnt_h-center == curPose[19:10]) & (cnt_v-center == curPose[9:0]);
+assign onLastPose = (cnt_h-center == curPose[19:10]) & (cnt_v-center == curPose[9:0]);
 assign emptyConers =(!window[0][0] & !window[32][0] & !window[0][32] && !window[32][32]);
 assign isStreight = (window[0][center] & window[32][center] & !window[center][0] & !window[center][32])
 					   ||(!window[0][center] & !window[32][center] & window[center][0] & window[center][32]);
+						
+always @(posedge clk)
+if (onLastPose)
+begin
+	
+
+
+end
 
 //=======================================================
 //First frame processing
@@ -193,6 +200,20 @@ end
 // Define next position
 //=======================================================
 
+//reg [20:0] predicted_state = 20'd0;
+//
+// find_next_pose find_next_pose_inst1(
+//	.clk(clk),
+//	.onRightPose(onLastPose),
+//	.dir(curPose[23:20]),
+//	.path_width(path_width),
+//	.cur_state(curPose[19:0]),
+//	.window(window),
+//	.next_state(predicted_state)
+//	);
+
+
+
 always @(posedge clk)
 	if(frameStart)
 	case (curPose[23:20])
@@ -210,12 +231,17 @@ integer k,l;
 always @(posedge clk)
 if (mazeParametersDefined)
 	begin
-	if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && cnt_h < curPose[19:10] + 10'd5)
+	if (onLastPose)
+	 outdataReg<={8{onLastPose}};
+	else if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && cnt_h < curPose[19:10] + 10'd5)
 		begin
 			outdataReg<=8'd200;
 		end
-	else
-		outdataReg<={7{window[center][center]}};
+	else if (cnt_v <10'd100)
+		outdataReg<={6{emptyConers}};
+	else 
+		outdataReg<={6{isStreight}};
+	
 	end
 	
 	
