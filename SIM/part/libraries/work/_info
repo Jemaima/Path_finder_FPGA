@@ -3,30 +3,49 @@ K3
 13
 cModel Technology
 Z0 dC:\Users\metel\QuartusProjects\v.1.0\SIM\part
-vfifo_1kx32
-IiX]J1A6d70;9cIJ8BaTjZ3
-VhiVKGXn1D3N`?_HmdVOQI1
+vfifo_1kx16
+IRWVACjlAn`X60Ml48HLA>3
+V[fG<[AD4YV;1hZJ^j6bHL1
 Z1 dC:\Users\metel\QuartusProjects\v.1.0\SIM\part
-w1513178096
-8../../MGF/FIFO/fifo_1kx32.v
-F../../MGF/FIFO/fifo_1kx32.v
+w1513325163
+8../../MGF/FIFO/fifo_1kx16.v
+F../../MGF/FIFO/fifo_1kx16.v
 L0 39
 Z2 OV;L;10.1d;51
 r1
 31
 Z3 o-work work -O0
 !i10b 1
+!s100 8KODQ<L[]DJ7el:JhQg5P1
+!s85 0
+!s108 1513633049.239000
+!s107 ../../MGF/FIFO/fifo_1kx16.v|
+!s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx16.v|-novopt|-work|work|
+!s101 -O0
+vfifo_1kx32
+IiX]J1A6d70;9cIJ8BaTjZ3
+VhiVKGXn1D3N`?_HmdVOQI1
+R1
+w1513178096
+8../../MGF/FIFO/fifo_1kx32.v
+F../../MGF/FIFO/fifo_1kx32.v
+L0 39
+R2
+r1
+31
+R3
+!i10b 1
 !s100 G=k=ckihSFHW_Q`BFDLeV1
 !s85 0
-!s108 1513631868.866000
+!s108 1513633049.092000
 !s107 ../../MGF/FIFO/fifo_1kx32.v|
 !s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx32.v|-novopt|-work|work|
 !s101 -O0
 vstudent_block
-IAe^mYCR[z8cNigEm=e3^_0
-VnoG_b7X8E0?UUM_HP8cDj3
+ITR6ZOfi[IFzFIgMS`BKJ^1
+VK?GajFV6;M;QQ@n;ghn:N1
 R1
-w1513631853
+w1513633041
 8../../HDL/student_block.v
 F../../HDL/student_block.v
 L0 2
@@ -35,9 +54,9 @@ r1
 31
 R3
 !i10b 1
-!s100 NClK1`f<NjVoS3fbWMenT3
+!s100 [X]FGVIeea<TW0=OAS2V91
 !s85 0
-!s108 1513631869.001000
+!s108 1513633049.381000
 !s107 ../../HDL/student_block.v|
 !s90 -reportprogress|300|../../HDL/student_block.v|-novopt|-work|work|
 !s101 -O0
@@ -55,7 +74,7 @@ R2
 r1
 !s85 0
 31
-!s108 1513631869.164000
+!s108 1513633049.548000
 !s107 tb.v|
 !s90 -reportprogress|300|-novopt|-work|work|tb.v|
 !s101 -O0

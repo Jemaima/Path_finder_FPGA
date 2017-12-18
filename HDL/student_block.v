@@ -19,29 +19,32 @@ module student_block(
 
 reg mazeParametersDefined = 1'b0;		/// вход в лабиринт
 reg [4:0] path_width = 5'd0;				/// ширина пути
-parameter center=16;							/// центр кадра
-parameter windowSize = 33;					/// размер кадра??????????
-	
+
+
+parameter centerV=8;							/// центр кадра
+parameter centerH=15;
+parameter windowSize = 31;					
+parameter fifoSize = 16;	
 //=======================================================
 // initial scan windows generation
 //=======================================================
 
 reg [7:0] outdataReg = 8'd0; 
-reg [32:0] window [32:0];
+reg [fifoSize:0] window [windowSize-1:0];
 reg [25:0] curPose = 25'd0;
 
 generate
 	genvar i;
-	for (i = 0; i < 32; i = i + 1)
+	for (i = 0; i < windowSize ; i = i + 1)
 	begin : gen1
 		initial
 			begin
-			window[i] = {33{1'b0}}; // initial each column = 0
+			window[i] = {(fifoSize+1){1'b0}}; // initial each column = 0
 			end
 		always @(posedge clk)
 		if (!video_frame_valid)
 		begin
-		window[i] = {33{1'b0}}; // reset each column = 0
+		window[i] = {(fifoSize+1){1'b0}}; // reset each column = 0
 		end
 	end
 endgenerate 
@@ -118,14 +121,14 @@ reg [1:0] fifo_enable = 2'b01;
 
 wire fifo_sclr;
 wire fifo_wrreg,fifo_rdreg;
-wire [31:0] fifo_din,fifo_dout;
+wire [fifoSize-1:0] fifo_din,fifo_dout;
 
 assign fifo_sclr = ~video_frame_valid;
 assign fifo_wrreq = video_data_valid & fifo_enable[0];
 assign fifo_rdreq = video_data_valid & fifo_enable[1];
-assign fifo_din = window[0][31:0];
+assign fifo_din = window[0][fifoSize-1:0];
 	
-fifo_1kx32 fifo_1kx32_inst1(
+fifo_1kx16 fifo_1kx16_inst1(
 	.clock(clk),
 	.data(fifo_din),
 	.rdreq(fifo_rdreq),
@@ -145,9 +148,9 @@ reg [5:0] j = 6'd0;
 always @(posedge clk)
 	if(video_data_valid)
 	begin
-	for (j=32;j>0;j=j-1)
-		window[j][32:0] <= window[j-1][32:0];	
-	window[0][32:0] <= {fifo_dout,video_data_in_bin};
+	for (j=windowSize-1;j>0;j=j-1)
+		window[j] <= window[j-1];	
+	window[0] <= {fifo_dout,video_data_in_bin};
 	end
 
 //=======================================================
@@ -158,10 +161,10 @@ wire onLastPose;
 wire isStreight;
 wire emptyConers;
 
-assign onLastPose = (cnt_h-center == curPose[19:10]) & (cnt_v-center == curPose[9:0]);
-assign emptyConers =(!window[0][0] & !window[32][0] & !window[0][32] && !window[32][32]);
-assign isStreight = (window[0][center] & window[32][center] & !window[center][0] & !window[center][32])
-					   ||(!window[0][center] & !window[32][center] & window[center][0] & window[center][32]);
+assign onLastPose = (cnt_h-centerH == curPose[19:10]) & (cnt_v-centerV == curPose[9:0]);
+assign emptyConers =(!window[0][0] & !window[windowSize-1][0] & !window[0][fifoSize-1] && !window[windowSize-1][fifoSize-1]);
+assign isStreight = (window[0][centerV] & window[windowSize-1][centerV] & !window[centerH][0] & !window[centerH][fifoSize-1])
+					   ||(!window[0][centerV] & !window[windowSize-1][centerV] & window[centerH][0] & window[centerH][fifoSize-1]);
 						
 always @(posedge clk)
 if (onLastPose)
