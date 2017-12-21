@@ -3,22 +3,41 @@ K3
 13
 cModel Technology
 Z0 dC:\Users\metel\QuartusProjects\v.1.0\SIM\part
-vfifo_1kx16
-IRWVACjlAn`X60Ml48HLA>3
-V[fG<[AD4YV;1hZJ^j6bHL1
+vdivider_16
+IUIU99@OXR<c11Z:gMXnOk0
+Vh;>db`IZA0MI[AW]9hU1S1
 Z1 dC:\Users\metel\QuartusProjects\v.1.0\SIM\part
-w1513325163
-8../../MGF/FIFO/fifo_1kx16.v
-F../../MGF/FIFO/fifo_1kx16.v
+w1513753143
+8../../MGF/DIVIDER/divider_16.v
+F../../MGF/DIVIDER/divider_16.v
 L0 39
 Z2 OV;L;10.1d;51
 r1
 31
 Z3 o-work work -O0
 !i10b 1
+!s100 e^6LZDd;88<LEY[OY>20i0
+!s85 0
+!s108 1513891523.682000
+!s107 ../../MGF/DIVIDER/divider_16.v|
+!s90 -reportprogress|300|../../MGF/DIVIDER/divider_16.v|-novopt|-work|work|
+!s101 -O0
+vfifo_1kx16
+IRWVACjlAn`X60Ml48HLA>3
+V[fG<[AD4YV;1hZJ^j6bHL1
+R1
+w1513325163
+8../../MGF/FIFO/fifo_1kx16.v
+F../../MGF/FIFO/fifo_1kx16.v
+L0 39
+R2
+r1
+31
+R3
+!i10b 1
 !s100 8KODQ<L[]DJ7el:JhQg5P1
 !s85 0
-!s108 1513633049.239000
+!s108 1513891523.414000
 !s107 ../../MGF/FIFO/fifo_1kx16.v|
 !s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx16.v|-novopt|-work|work|
 !s101 -O0
@@ -37,15 +56,34 @@ R3
 !i10b 1
 !s100 G=k=ckihSFHW_Q`BFDLeV1
 !s85 0
-!s108 1513633049.092000
+!s108 1513889457.305000
 !s107 ../../MGF/FIFO/fifo_1kx32.v|
 !s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx32.v|-novopt|-work|work|
 !s101 -O0
+vfind_geometric_centers
+IhOi;7aXj3TOH`Q>idKI201
+V9NeC>XJz::0DLDZK>fcK<3
+R1
+w1513889421
+8../../HDL/find_geometric_centers.v
+F../../HDL/find_geometric_centers.v
+L0 1
+R2
+r1
+31
+R3
+!i10b 1
+!s100 6Un@LWC3<JchQ8o<hDCfV3
+!s85 0
+!s108 1513891523.892000
+!s107 ../../HDL/find_geometric_centers.v|
+!s90 -reportprogress|300|../../HDL/find_geometric_centers.v|-novopt|-work|work|
+!s101 -O0
 vstudent_block
-ITR6ZOfi[IFzFIgMS`BKJ^1
+IR=JezSY`_TlhiF:Va_WoC3
 VK?GajFV6;M;QQ@n;ghn:N1
 R1
-w1513633041
+w1513891517
 8../../HDL/student_block.v
 F../../HDL/student_block.v
 L0 2
@@ -54,19 +92,19 @@ r1
 31
 R3
 !i10b 1
-!s100 [X]FGVIeea<TW0=OAS2V91
+!s100 RVe_giBXTCK?3RVG4lZOG1
 !s85 0
-!s108 1513633049.381000
+!s108 1513891524.080000
 !s107 ../../HDL/student_block.v|
 !s90 -reportprogress|300|../../HDL/student_block.v|-novopt|-work|work|
 !s101 -O0
 vtb
 !i10b 1
-!s100 QYL<Se`FPBZ[VU;A@;T6G1
-IDMF5=XFaDAzK4@;ifGhYc1
-VBUebUH7aQdi_]5@5Rh23^1
+!s100 FCdbbc?cd0Wll9Ik7>4EO2
+IY<MVDi_9iM_C;`631XPI21
+VJmc1=]OEUNLWmL@z<>8Vo3
 R1
-w1512842389
+w1513699556
 8tb.v
 Ftb.v
 L0 3
@@ -74,7 +112,7 @@ R2
 r1
 !s85 0
 31
-!s108 1513633049.548000
+!s108 1513891524.242000
 !s107 tb.v|
 !s90 -reportprogress|300|-novopt|-work|work|tb.v|
 !s101 -O0
