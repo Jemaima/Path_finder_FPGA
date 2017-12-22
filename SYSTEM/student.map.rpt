@@ -1,6 +1,6 @@
 Analysis & Synthesis report for student
-Mon Oct 16 19:14:29 2017
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
+Fri Dec 22 11:21:37 2017
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
@@ -13,20 +13,30 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Full Version
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis IP Cores Summary
-  9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Inverted Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Source assignments for parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst
- 14. Parameter Settings for User Entity Instance: system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst|altpll:altpll_component
- 15. Parameter Settings for User Entity Instance: reset_generator:rst_gen_inst
- 16. Parameter Settings for User Entity Instance: parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component
- 17. altpll Parameter Settings by Entity Instance
- 18. Port Connectivity Checks: "parameter_ctrl:parameter_ctrl_inst|source:source_inst"
- 19. Port Connectivity Checks: "student_block:student_block_inst"
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram
+ 16. Source assignments for parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst
+ 17. Parameter Settings for User Entity Instance: system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst|altpll:altpll_component
+ 18. Parameter Settings for User Entity Instance: reset_generator:rst_gen_inst
+ 19. Parameter Settings for User Entity Instance: student_block:student_block_inst
+ 20. Parameter Settings for User Entity Instance: student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component
+ 21. Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1
+ 22. Parameter Settings for User Entity Instance: parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component
+ 23. altpll Parameter Settings by Entity Instance
+ 24. scfifo Parameter Settings by Entity Instance
+ 25. Port Connectivity Checks: "parameter_ctrl:parameter_ctrl_inst|source:source_inst"
+ 26. Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"
+ 27. Port Connectivity Checks: "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1"
+ 28. Port Connectivity Checks: "student_block:student_block_inst"
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+ 31. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -49,24 +59,24 @@ applicable agreement for further details.
 
 
 
-+----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                     ;
-+------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Oct 16 19:14:29 2017       ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Full Version ;
-; Revision Name                      ; student                                     ;
-; Top-level Entity Name              ; student_top                                 ;
-; Family                             ; Cyclone III                                 ;
-; Total logic elements               ; 356                                         ;
-;     Total combinational functions  ; 267                                         ;
-;     Dedicated logic registers      ; 254                                         ;
-; Total registers                    ; 254                                         ;
-; Total pins                         ; 25                                          ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 1                                           ;
-+------------------------------------+---------------------------------------------+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Dec 22 11:21:37 2017      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; student                                    ;
+; Top-level Entity Name              ; student_top                                ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 676                                        ;
+;     Total combinational functions  ; 554                                        ;
+;     Dedicated logic registers      ; 410                                        ;
+; Total registers                    ; 410                                        ;
+; Total pins                         ; 25                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 8,192                                      ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 1                                          ;
++------------------------------------+--------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -161,15 +171,16 @@ applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processor 2            ; < 0.1%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -178,22 +189,37 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                            ; Library ;
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
-; ../HDL/student_top.v             ; yes             ; User Verilog HDL File        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/HDL/student_top.v                 ;         ;
-; ../HDL/parameter_ctrl.v          ; yes             ; User Verilog HDL File        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/HDL/parameter_ctrl.v              ;         ;
-; ../HDL/system_clock.v            ; yes             ; User Verilog HDL File        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/HDL/system_clock.v                ;         ;
-; ../HDL/reset_generator.v         ; yes             ; User Verilog HDL File        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/HDL/reset_generator.v             ;         ;
-; ../HDL/adc_controller.v          ; yes             ; User Verilog HDL File        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/HDL/adc_controller.v              ;         ;
-; ../HDL/student_block.v           ; yes             ; User Verilog HDL File        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/HDL/student_block.v               ;         ;
-; ../HDL/dac_controller.v          ; yes             ; User Verilog HDL File        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/HDL/dac_controller.v              ;         ;
-; ../MGF/PLL/pll_40_mhz.v          ; yes             ; User Wizard-Generated File   ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/MGF/PLL/pll_40_mhz.v              ;         ;
-; ../MGF/ALTCLKCTRL/global_buf.v   ; yes             ; User Wizard-Generated File   ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/MGF/ALTCLKCTRL/global_buf.v       ;         ;
-; ../MGF/SOURCE/source.v           ; yes             ; User Wizard-Generated File   ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/MGF/SOURCE/source.v               ;         ;
+; ../MGF/FIFO/fifo_1kx16.v         ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/FIFO/fifo_1kx16.v              ;         ;
+; ../HDL/student_top.v             ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/student_top.v                  ;         ;
+; ../HDL/parameter_ctrl.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/parameter_ctrl.v               ;         ;
+; ../HDL/system_clock.v            ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/system_clock.v                 ;         ;
+; ../HDL/reset_generator.v         ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/reset_generator.v              ;         ;
+; ../HDL/adc_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/adc_controller.v               ;         ;
+; ../HDL/student_block.v           ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/student_block.v                ;         ;
+; ../HDL/dac_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/dac_controller.v               ;         ;
+; ../MGF/PLL/pll_40_mhz.v          ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/PLL/pll_40_mhz.v               ;         ;
+; ../MGF/ALTCLKCTRL/global_buf.v   ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v        ;         ;
+; ../MGF/SOURCE/source.v           ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/SOURCE/source.v                ;         ;
+; ../HDL/find_geometric_centers.v  ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/find_geometric_centers.v       ;         ;
 ; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altpll.tdf               ;         ;
 ; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc           ;         ;
 ; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_pll.inc          ;         ;
 ; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/stratixii_pll.inc        ;         ;
 ; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/cycloneii_pll.inc        ;         ;
-; db/pll_40_mhz_altpll.v           ; yes             ; Auto-Generated Megafunction  ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/SYSTEM/db/pll_40_mhz_altpll.v     ;         ;
+; db/pll_40_mhz_altpll.v           ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/pll_40_mhz_altpll.v      ;         ;
+; scfifo.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/scfifo.tdf               ;         ;
+; a_regfifo.inc                    ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_regfifo.inc            ;         ;
+; a_dpfifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_dpfifo.inc             ;         ;
+; a_i2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_i2fifo.inc             ;         ;
+; a_fffifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_fffifo.inc             ;         ;
+; a_f2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_f2fifo.inc             ;         ;
+; db/scfifo_t171.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/scfifo_t171.tdf          ;         ;
+; db/a_dpfifo_gp61.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/a_dpfifo_gp61.tdf        ;         ;
+; db/altsyncram_52g1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/altsyncram_52g1.tdf      ;         ;
+; db/cmpr_ls8.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cmpr_ls8.tdf             ;         ;
+; db/cntr_p8b.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_p8b.tdf             ;         ;
+; db/cntr_da7.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_da7.tdf             ;         ;
+; db/cntr_1ab.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_1ab.tdf             ;         ;
 ; altsource_probe.v                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe.v        ;         ;
 ; altsource_probe_body.vhd         ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe_body.vhd ;         ;
 ; sld_rom_sr.vhd                   ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_rom_sr.vhd           ;         ;
@@ -202,37 +228,38 @@ applicable agreement for further details.
 +----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                            ;
-+---------------------------------------------+--------------------------+
-; Resource                                    ; Usage                    ;
-+---------------------------------------------+--------------------------+
-; Estimated Total logic elements              ; 356                      ;
-;                                             ;                          ;
-; Total combinational functions               ; 267                      ;
-; Logic element usage by number of LUT inputs ;                          ;
-;     -- 4 input functions                    ; 109                      ;
-;     -- 3 input functions                    ; 65                       ;
-;     -- <=2 input functions                  ; 93                       ;
-;                                             ;                          ;
-; Logic elements by mode                      ;                          ;
-;     -- normal mode                          ; 235                      ;
-;     -- arithmetic mode                      ; 32                       ;
-;                                             ;                          ;
-; Total registers                             ; 254                      ;
-;     -- Dedicated logic registers            ; 254                      ;
-;     -- I/O registers                        ; 0                        ;
-;                                             ;                          ;
-; I/O pins                                    ; 25                       ;
-; Embedded Multiplier 9-bit elements          ; 0                        ;
-; Total PLLs                                  ; 1                        ;
-;     -- PLLs                                 ; 1                        ;
-;                                             ;                          ;
-; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
-; Maximum fan-out                             ; 159                      ;
-; Total fan-out                               ; 1541                     ;
-; Average fan-out                             ; 2.64                     ;
-+---------------------------------------------+--------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                                                                                  ;
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                                                                                          ;
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; Estimated Total logic elements              ; 676                                                                                                                                            ;
+;                                             ;                                                                                                                                                ;
+; Total combinational functions               ; 554                                                                                                                                            ;
+; Logic element usage by number of LUT inputs ;                                                                                                                                                ;
+;     -- 4 input functions                    ; 210                                                                                                                                            ;
+;     -- 3 input functions                    ; 148                                                                                                                                            ;
+;     -- <=2 input functions                  ; 196                                                                                                                                            ;
+;                                             ;                                                                                                                                                ;
+; Logic elements by mode                      ;                                                                                                                                                ;
+;     -- normal mode                          ; 418                                                                                                                                            ;
+;     -- arithmetic mode                      ; 136                                                                                                                                            ;
+;                                             ;                                                                                                                                                ;
+; Total registers                             ; 410                                                                                                                                            ;
+;     -- Dedicated logic registers            ; 410                                                                                                                                            ;
+;     -- I/O registers                        ; 0                                                                                                                                              ;
+;                                             ;                                                                                                                                                ;
+; I/O pins                                    ; 25                                                                                                                                             ;
+; Total memory bits                           ; 8192                                                                                                                                           ;
+; Embedded Multiplier 9-bit elements          ; 0                                                                                                                                              ;
+; Total PLLs                                  ; 1                                                                                                                                              ;
+;     -- PLLs                                 ; 1                                                                                                                                              ;
+;                                             ;                                                                                                                                                ;
+; Maximum fan-out node                        ; system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz|global_buf_altclkctrl_uhi:global_buf_altclkctrl_uhi_component|wire_clkctrl1_outclk ;
+; Maximum fan-out                             ; 273                                                                                                                                            ;
+; Total fan-out                               ; 3103                                                                                                                                           ;
+; Average fan-out                             ; 3.00                                                                                                                                           ;
++---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -240,9 +267,9 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                               ; Library Name ;
 +---------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |student_top                                                              ; 267 (1)           ; 254 (0)      ; 0           ; 0            ; 0       ; 0         ; 25   ; 0            ; |student_top                                                                                                                                                                                                                                                      ; work         ;
-;    |adc_controller:adc_ctrl_inst|                                         ; 52 (52)           ; 51 (51)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|adc_controller:adc_ctrl_inst                                                                                                                                                                                                                         ; work         ;
-;    |dac_controller:dac_ctrl_inst|                                         ; 8 (8)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|dac_controller:dac_ctrl_inst                                                                                                                                                                                                                         ; work         ;
+; |student_top                                                              ; 554 (1)           ; 410 (0)      ; 8192        ; 0            ; 0       ; 0         ; 25   ; 0            ; |student_top                                                                                                                                                                                                                                                      ; work         ;
+;    |adc_controller:adc_ctrl_inst|                                         ; 46 (46)           ; 54 (54)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|adc_controller:adc_ctrl_inst                                                                                                                                                                                                                         ; work         ;
+;    |dac_controller:dac_ctrl_inst|                                         ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|dac_controller:dac_ctrl_inst                                                                                                                                                                                                                         ; work         ;
 ;    |parameter_ctrl:parameter_ctrl_inst|                                   ; 73 (0)            ; 108 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst                                                                                                                                                                                                                   ; work         ;
 ;       |source:source_inst|                                                ; 73 (0)            ; 108 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst                                                                                                                                                                                                ; work         ;
 ;          |altsource_probe:altsource_probe_component|                      ; 73 (0)            ; 108 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component                                                                                                                                                      ; work         ;
@@ -250,10 +277,19 @@ applicable agreement for further details.
 ;                |altsource_probe_impl:\wider_source_gen:wider_source_inst| ; 69 (56)           ; 108 (101)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst                                              ; work         ;
 ;                   |sld_rom_sr:\no_instance_id_gen:rom_info_inst|          ; 13 (13)           ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst ; work         ;
 ;    |reset_generator:rst_gen_inst|                                         ; 17 (17)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|reset_generator:rst_gen_inst                                                                                                                                                                                                                         ; work         ;
-;    |sld_hub:auto_hub|                                                     ; 116 (1)           ; 78 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub                                                                                                                                                                                                                                     ; work         ;
-;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                      ; 115 (79)          ; 78 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                        ; work         ;
-;          |sld_rom_sr:hub_info_reg|                                        ; 19 (19)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                ; work         ;
+;    |sld_hub:auto_hub|                                                     ; 115 (1)           ; 78 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub                                                                                                                                                                                                                                     ; work         ;
+;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                      ; 114 (77)          ; 78 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                        ; work         ;
+;          |sld_rom_sr:hub_info_reg|                                        ; 20 (20)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                ; work         ;
 ;          |sld_shadow_jsm:shadow_jsm|                                      ; 17 (17)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_shadow_jsm:shadow_jsm                                                                                                                                                              ; work         ;
+;    |student_block:student_block_inst|                                     ; 302 (225)         ; 153 (106)    ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst                                                                                                                                                                                                                     ; work         ;
+;       |fifo_1kx16:fifo_1kx16_inst1|                                       ; 77 (0)            ; 47 (0)       ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1                                                                                                                                                                                         ; work         ;
+;          |scfifo:scfifo_component|                                        ; 77 (0)            ; 47 (0)       ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component                                                                                                                                                                 ; work         ;
+;             |scfifo_t171:auto_generated|                                  ; 77 (0)            ; 47 (0)       ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated                                                                                                                                      ; work         ;
+;                |a_dpfifo_gp61:dpfifo|                                     ; 77 (45)           ; 47 (18)      ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo                                                                                                                 ; work         ;
+;                   |altsyncram_52g1:FIFOram|                               ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram                                                                                         ; work         ;
+;                   |cntr_1ab:wr_ptr|                                       ; 11 (11)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_1ab:wr_ptr                                                                                                 ; work         ;
+;                   |cntr_da7:usedw_counter|                                ; 11 (11)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_da7:usedw_counter                                                                                          ; work         ;
+;                   |cntr_p8b:rd_ptr_msb|                                   ; 10 (10)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_p8b:rd_ptr_msb                                                                                             ; work         ;
 ;    |system_clock:sys_clk_inst|                                            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|system_clock:sys_clk_inst                                                                                                                                                                                                                            ; work         ;
 ;       |global_buf:global_buf_clk_108_mhz|                                 ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz                                                                                                                                                                                          ; work         ;
 ;          |global_buf_altclkctrl_uhi:global_buf_altclkctrl_uhi_component|  ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz|global_buf_altclkctrl_uhi:global_buf_altclkctrl_uhi_component                                                                                                                            ; work         ;
@@ -266,26 +302,77 @@ applicable agreement for further details.
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                             ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
+; Name                                                                                                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF  ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
+; student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|ALTSYNCRAM ; M9K  ; Simple Dual Port ; 1024         ; 16           ; 1024         ; 16           ; 16384 ; None ;
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
+
+
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                        ;
-+--------+------------------------------+---------+--------------+--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-; Vendor ; IP Core Name                 ; Version ; Release Date ; License Type ; Entity Instance                                                          ; IP Include File                                                   ;
-+--------+------------------------------+---------+--------------+--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
-; Altera ; In-System Sources and Probes ; 13.1    ; N/A          ; N/A          ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst       ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/MGF/SOURCE/source.v         ;
-; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_13_mhz  ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/MGF/ALTCLKCTRL/global_buf.v ;
-; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/MGF/ALTCLKCTRL/global_buf.v ;
-; Altera ; ALTPLL                       ; 13.1    ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst        ; D:/AlteraProjects/BMSTU/STUDENT/v.3.0/MGF/PLL/pll_40_mhz.v        ;
-+--------+------------------------------+---------+--------------+--------------+--------------------------------------------------------------------------+-------------------------------------------------------------------+
++--------+------------------------------+---------+--------------+--------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
+; Vendor ; IP Core Name                 ; Version ; Release Date ; License Type ; Entity Instance                                                           ; IP Include File                                                  ;
++--------+------------------------------+---------+--------------+--------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
+; Altera ; In-System Sources and Probes ; 13.1    ; N/A          ; N/A          ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst        ; C:/Users/metel/QuartusProjects/v.1.0/MGF/SOURCE/source.v         ;
+; Altera ; FIFO                         ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1 ; C:/Users/metel/QuartusProjects/v.1.0/MGF/FIFO/fifo_1kx16.v       ;
+; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_13_mhz   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
+; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz  ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
+; Altera ; ALTPLL                       ; 13.1    ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst         ; C:/Users/metel/QuartusProjects/v.1.0/MGF/PLL/pll_40_mhz.v        ;
++--------+------------------------------+---------+--------------+--------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                 ;
-+------------------------------------------------+---------------------------------------------------+
-; Register name                                  ; Reason for Removal                                ;
-+------------------------------------------------+---------------------------------------------------+
-; adc_controller:adc_ctrl_inst|comp_sync_mstb[2] ; Merged with adc_controller:adc_ctrl_inst|pulse[0] ;
-; Total Number of Removed Registers = 1          ;                                                   ;
-+------------------------------------------------+---------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                 ;
++-------------------------------------------------------+------------------------------------------------------------+
+; Register name                                         ; Reason for Removal                                         ;
++-------------------------------------------------------+------------------------------------------------------------+
+; student_block:student_block_inst|window[0][9]         ; Lost fanout                                                ;
+; student_block:student_block_inst|window[0][10]        ; Lost fanout                                                ;
+; student_block:student_block_inst|window[0][11]        ; Lost fanout                                                ;
+; student_block:student_block_inst|window[0][12]        ; Lost fanout                                                ;
+; student_block:student_block_inst|window[0][13]        ; Lost fanout                                                ;
+; student_block:student_block_inst|window[0][14]        ; Lost fanout                                                ;
+; student_block:student_block_inst|window[0][15]        ; Lost fanout                                                ;
+; student_block:student_block_inst|startPose[0..3,5..9] ; Stuck at GND due to stuck port data_in                     ;
+; student_block:student_block_inst|curPose[1,2]         ; Stuck at GND due to stuck port data_in                     ;
+; student_block:student_block_inst|endPose[2,3,5..7,9]  ; Stuck at GND due to stuck port data_in                     ;
+; student_block:student_block_inst|curPose[0,3,5..9]    ; Stuck at GND due to stuck port data_in                     ;
+; student_block:student_block_inst|outdataReg[2]        ; Merged with student_block:student_block_inst|outdataReg[4] ;
+; student_block:student_block_inst|outdataReg[0]        ; Merged with student_block:student_block_inst|outdataReg[1] ;
+; adc_controller:adc_ctrl_inst|comp_sync_mstb[2]        ; Merged with adc_controller:adc_ctrl_inst|pulse[0]          ;
+; student_block:student_block_inst|endPose[1,4,8]       ; Merged with student_block:student_block_inst|endPose[0]    ;
+; student_block:student_block_inst|fifo_enable[0]       ; Stuck at VCC due to stuck port data_in                     ;
+; Total Number of Removed Registers = 38                ;                                                            ;
++-------------------------------------------------------+------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                             ;
++-----------------------------------------------+---------------------------+---------------------------------------------+
+; Register name                                 ; Reason for Removal        ; Registers Removed due to This Register      ;
++-----------------------------------------------+---------------------------+---------------------------------------------+
+; student_block:student_block_inst|startPose[9] ; Stuck at GND              ; student_block:student_block_inst|curPose[9] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[8] ; Stuck at GND              ; student_block:student_block_inst|curPose[8] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[7] ; Stuck at GND              ; student_block:student_block_inst|curPose[7] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[6] ; Stuck at GND              ; student_block:student_block_inst|curPose[6] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[5] ; Stuck at GND              ; student_block:student_block_inst|curPose[5] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[3] ; Stuck at GND              ; student_block:student_block_inst|curPose[3] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[2] ; Stuck at GND              ; student_block:student_block_inst|curPose[2] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[1] ; Stuck at GND              ; student_block:student_block_inst|curPose[1] ;
+;                                               ; due to stuck port data_in ;                                             ;
+; student_block:student_block_inst|startPose[0] ; Stuck at GND              ; student_block:student_block_inst|curPose[0] ;
+;                                               ; due to stuck port data_in ;                                             ;
++-----------------------------------------------+---------------------------+---------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -293,12 +380,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 254   ;
-; Number of registers using Synchronous Clear  ; 31    ;
-; Number of registers using Synchronous Load   ; 12    ;
+; Total registers                              ; 410   ;
+; Number of registers using Synchronous Clear  ; 52    ;
+; Number of registers using Synchronous Load   ; 42    ;
 ; Number of registers using Asynchronous Clear ; 52    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 98    ;
+; Number of registers using Clock Enable       ; 223   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -323,12 +410,32 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                                                                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|hold_reg[9]                                                  ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |student_top|reset_generator:rst_gen_inst|timer_cnt[1]                                                                                                                                                                                                                            ;
-; 4:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|shift_reg[2]                                                 ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|word_counter[0] ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|WORD_SR[1]      ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|hold_reg[4]                                                  ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|window[0][1]                                                                                                                                                                                                                        ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|cnt_h[8]                                                                                                                                                                                                                            ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|cnt_v[5]                                                                                                                                                                                                                            ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |student_top|reset_generator:rst_gen_inst|timer_cnt[3]                                                                                                                                                                                                                            ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|shift_reg[4]                                                 ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|word_counter[2] ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|WORD_SR[3]      ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|stRight[2]                                                                                                                                                                                                                          ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|stLeft[4]                                                                                                                                                                                                                           ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|hub_minor_ver_reg[0]                                                                                                                                                                                   ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|mixer_addr_reg[4]                                                                                                                                                                                      ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|word_counter[1]                                                                                                                                                                ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irsr_reg[2]                                                                                                                                                                                            ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 56 LEs               ; 32 LEs                 ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[3]                                                                                                                                                                                     ;
+; 20:1               ; 4 bits    ; 52 LEs        ; 36 LEs               ; 16 LEs                 ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|WORD_SR[1]                                                                                                                                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                                    ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                                     ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -801,6 +908,58 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: student_block:student_block_inst ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; centerV        ; 8     ; Signed Integer                                       ;
+; centerH        ; 15    ; Signed Integer                                       ;
+; windowSize     ; 31    ; Signed Integer                                       ;
+; fifoSize       ; 16    ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component ;
++-------------------------+-------------+-------------------------------------------------------------------------------------------+
+; Parameter Name          ; Value       ; Type                                                                                      ;
++-------------------------+-------------+-------------------------------------------------------------------------------------------+
+; AUTO_CARRY_CHAINS       ; ON          ; AUTO_CARRY                                                                                ;
+; IGNORE_CARRY_BUFFERS    ; OFF         ; IGNORE_CARRY                                                                              ;
+; AUTO_CASCADE_CHAINS     ; ON          ; AUTO_CASCADE                                                                              ;
+; IGNORE_CASCADE_BUFFERS  ; OFF         ; IGNORE_CASCADE                                                                            ;
+; lpm_width               ; 16          ; Signed Integer                                                                            ;
+; LPM_NUMWORDS            ; 1024        ; Signed Integer                                                                            ;
+; LPM_WIDTHU              ; 10          ; Signed Integer                                                                            ;
+; LPM_SHOWAHEAD           ; ON          ; Untyped                                                                                   ;
+; UNDERFLOW_CHECKING      ; ON          ; Untyped                                                                                   ;
+; OVERFLOW_CHECKING       ; ON          ; Untyped                                                                                   ;
+; ALLOW_RWCYCLE_WHEN_FULL ; OFF         ; Untyped                                                                                   ;
+; ADD_RAM_OUTPUT_REGISTER ; ON          ; Untyped                                                                                   ;
+; ALMOST_FULL_VALUE       ; 0           ; Untyped                                                                                   ;
+; ALMOST_EMPTY_VALUE      ; 0           ; Untyped                                                                                   ;
+; USE_EAB                 ; ON          ; Untyped                                                                                   ;
+; MAXIMIZE_SPEED          ; 5           ; Untyped                                                                                   ;
+; DEVICE_FAMILY           ; Cyclone III ; Untyped                                                                                   ;
+; OPTIMIZE_FOR_SPEED      ; 5           ; Untyped                                                                                   ;
+; CBXI_PARAMETER          ; scfifo_t171 ; Untyped                                                                                   ;
++-------------------------+-------------+-------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1 ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+; stepV          ; 00100 ; Unsigned Binary                                                                                          ;
+; stepH          ; 01000 ; Unsigned Binary                                                                                          ;
++----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +----------------------------------------------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component ;
 +-------------------------+-----------------+--------------------------------------------------------------------------------------------------+
@@ -838,6 +997,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+------------------------------------------------------------------------------+
 
 
++-------------------------------------------------------------------------------------------------------------------+
+; scfifo Parameter Settings by Entity Instance                                                                      ;
++----------------------------+--------------------------------------------------------------------------------------+
+; Name                       ; Value                                                                                ;
++----------------------------+--------------------------------------------------------------------------------------+
+; Number of entity instances ; 1                                                                                    ;
+; Entity Instance            ; student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component ;
+;     -- FIFO Type           ; Single Clock                                                                         ;
+;     -- lpm_width           ; 16                                                                                   ;
+;     -- LPM_NUMWORDS        ; 1024                                                                                 ;
+;     -- LPM_SHOWAHEAD       ; ON                                                                                   ;
+;     -- USE_EAB             ; ON                                                                                   ;
++----------------------------+--------------------------------------------------------------------------------------+
+
+
 +-------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "parameter_ctrl:parameter_ctrl_inst|source:source_inst"                                       ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -846,6 +1020,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; probe         ; Input  ; Info     ; Stuck at GND                                                                        ;
 ; source[15..2] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"        ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; botton_center ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; left_center   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; upper_center  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; right_center  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1"                        ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; q[15] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------+
@@ -857,13 +1052,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+--------+----------+------------------------+
 
 
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
++---------------------------------+
+; Elapsed Time Per Partition      ;
++------------------+--------------+
+; Partition Name   ; Elapsed Time ;
++------------------+--------------+
+; Top              ; 00:00:01     ;
+; sld_hub:auto_hub ; 00:00:00     ;
++------------------+--------------+
 
 
 +-------------------------------+
@@ -871,31 +1067,41 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-    Info: Processing started: Mon Oct 16 19:14:26 2017
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Fri Dec 22 11:21:31 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off student -c student
-Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/hdl/student_top.v
+Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/fifo/fifo_1kx16.v
+    Info (12023): Found entity 1: fifo_1kx16
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/student_top.v
     Info (12023): Found entity 1: student_top
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/hdl/parameter_ctrl.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/parameter_ctrl.v
     Info (12023): Found entity 1: parameter_ctrl
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/hdl/system_clock.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/system_clock.v
     Info (12023): Found entity 1: system_clock
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/hdl/reset_generator.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/reset_generator.v
     Info (12023): Found entity 1: reset_generator
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/hdl/adc_controller.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/adc_controller.v
     Info (12023): Found entity 1: adc_controller
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/hdl/student_block.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/student_block.v
     Info (12023): Found entity 1: student_block
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/hdl/dac_controller.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/dac_controller.v
     Info (12023): Found entity 1: dac_controller
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/mgf/pll/pll_40_mhz.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/pll/pll_40_mhz.v
     Info (12023): Found entity 1: pll_40_mhz
-Info (12021): Found 2 design units, including 2 entities, in source file /alteraprojects/bmstu/student/v.3.0/mgf/altclkctrl/global_buf.v
+Info (12021): Found 2 design units, including 2 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/altclkctrl/global_buf.v
     Info (12023): Found entity 1: global_buf_altclkctrl_uhi
     Info (12023): Found entity 2: global_buf
-Info (12021): Found 1 design units, including 1 entities, in source file /alteraprojects/bmstu/student/v.3.0/mgf/source/source.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/source/source.v
     Info (12023): Found entity 1: source
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/fifo/fifo_1kx32.v
+    Info (12023): Found entity 1: fifo_1kx32
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/divider/divider_16.v
+    Info (12023): Found entity 1: divider_16
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/find_geometric_centers.v
+    Info (12023): Found entity 1: find_geometric_centers
+Warning (10236): Verilog HDL Implicit Net warning at student_block.v(126): created implicit net for "fifo_wrreq"
+Warning (10236): Verilog HDL Implicit Net warning at student_block.v(127): created implicit net for "fifo_rdreq"
 Info (12127): Elaborating entity "student_top" for the top level hierarchy
 Info (12128): Elaborating entity "system_clock" for hierarchy "system_clock:sys_clk_inst"
 Info (12128): Elaborating entity "pll_40_mhz" for hierarchy "system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst"
@@ -968,6 +1174,54 @@ Info (12128): Elaborating entity "global_buf_altclkctrl_uhi" for hierarchy "syst
 Info (12128): Elaborating entity "reset_generator" for hierarchy "reset_generator:rst_gen_inst"
 Info (12128): Elaborating entity "adc_controller" for hierarchy "adc_controller:adc_ctrl_inst"
 Info (12128): Elaborating entity "student_block" for hierarchy "student_block:student_block_inst"
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(164): object "isStreight" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(165): object "emptyConers" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(166): object "next_possible_dirs" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(255): object "botton_c_z" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(256): object "left_c_z" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(257): object "upper_c_z" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(258): object "right_c_z" assigned a value but never read
+Warning (10855): Verilog HDL warning at student_block.v(46): initial value for variable window should be constant
+Warning (10230): Verilog HDL assignment warning at student_block.v(149): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at student_block.v(154): truncated value with size 32 to match size of target (6)
+Info (12128): Elaborating entity "fifo_1kx16" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1"
+Info (12128): Elaborating entity "scfifo" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component"
+Info (12130): Elaborated megafunction instantiation "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component"
+Info (12133): Instantiated megafunction "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component" with the following parameter:
+    Info (12134): Parameter "add_ram_output_register" = "ON"
+    Info (12134): Parameter "intended_device_family" = "Cyclone III"
+    Info (12134): Parameter "lpm_hint" = "RAM_BLOCK_TYPE=M9K"
+    Info (12134): Parameter "lpm_numwords" = "1024"
+    Info (12134): Parameter "lpm_showahead" = "ON"
+    Info (12134): Parameter "lpm_type" = "scfifo"
+    Info (12134): Parameter "lpm_width" = "16"
+    Info (12134): Parameter "lpm_widthu" = "10"
+    Info (12134): Parameter "overflow_checking" = "ON"
+    Info (12134): Parameter "underflow_checking" = "ON"
+    Info (12134): Parameter "use_eab" = "ON"
+Info (12021): Found 1 design units, including 1 entities, in source file db/scfifo_t171.tdf
+    Info (12023): Found entity 1: scfifo_t171
+Info (12128): Elaborating entity "scfifo_t171" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated"
+Info (12021): Found 1 design units, including 1 entities, in source file db/a_dpfifo_gp61.tdf
+    Info (12023): Found entity 1: a_dpfifo_gp61
+Info (12128): Elaborating entity "a_dpfifo_gp61" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_52g1.tdf
+    Info (12023): Found entity 1: altsyncram_52g1
+Info (12128): Elaborating entity "altsyncram_52g1" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_ls8.tdf
+    Info (12023): Found entity 1: cmpr_ls8
+Info (12128): Elaborating entity "cmpr_ls8" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cmpr_ls8:almost_full_comparer"
+Info (12128): Elaborating entity "cmpr_ls8" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cmpr_ls8:three_comparison"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_p8b.tdf
+    Info (12023): Found entity 1: cntr_p8b
+Info (12128): Elaborating entity "cntr_p8b" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_p8b:rd_ptr_msb"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_da7.tdf
+    Info (12023): Found entity 1: cntr_da7
+Info (12128): Elaborating entity "cntr_da7" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_da7:usedw_counter"
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_1ab.tdf
+    Info (12023): Found entity 1: cntr_1ab
+Info (12128): Elaborating entity "cntr_1ab" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_1ab:wr_ptr"
+Info (12128): Elaborating entity "find_geometric_centers" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"
 Info (12128): Elaborating entity "dac_controller" for hierarchy "dac_controller:dac_ctrl_inst"
 Info (12128): Elaborating entity "parameter_ctrl" for hierarchy "parameter_ctrl:parameter_ctrl_inst"
 Info (12128): Elaborating entity "source" for hierarchy "parameter_ctrl:parameter_ctrl_inst|source:source_inst"
@@ -985,18 +1239,44 @@ Info (12128): Elaborating entity "altsource_probe_body" for hierarchy "parameter
 Info (12128): Elaborating entity "altsource_probe_impl" for hierarchy "parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst"
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst"
 Warning (12010): Port "probe" on the entity instantiation of "altsource_probe_component" is connected to a signal of width 1. The formal width of the signal in the module is 2.  The extra bits will be driven by GND.
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[15]"
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[8]"
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[9]"
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[10]"
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[11]"
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[12]"
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[13]"
+        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[14]"
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
+Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "sld_hub:auto_hub|receive[0][0]" is stuck at GND
+Info (144001): Generated suppressed messages file C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/student.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 395 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 738 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 362 logic cells
+    Info (21061): Implemented 697 logic cells
+    Info (21064): Implemented 8 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 570 megabytes
-    Info: Processing ended: Mon Oct 16 19:14:29 2017
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 27 warnings
+    Info: Peak virtual memory: 629 megabytes
+    Info: Processing ended: Fri Dec 22 11:21:37 2017
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/student.map.smsg.
 
 
