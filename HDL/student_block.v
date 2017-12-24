@@ -32,7 +32,7 @@ parameter windowSize = 10'd31;
 parameter fifoSize 	= 10'd16;	
 
 parameter stepH = 10'd8;
-parameter stepV = 10'd4;
+parameter stepV = 10'd8;
 //=======================================================
 // initial scan windows generation
 //=======================================================
@@ -174,7 +174,7 @@ assign emptyConers =(!window[0][0] & !window[windowSize-1][0] & !window[0][fifoS
 assign isStreight = (window[0][centerV] & window[windowSize-1][centerV] & !window[centerH][0] & !window[centerH][fifoSize-1])
 					   ||(!window[0][centerV] & !window[windowSize-1][centerV] & window[centerH][0] & window[centerH][fifoSize-1]) & mazeParametersDefined;
 	
-assign next_possible_dirs = {window[centerH][0],window[windowSize-1][centerV],window[centerH][fifoSize-1],window[0][centerV]}&(~{curPose[21:20],curPose[23:22]})&{4{window[centerH][centerV]}};
+assign next_possible_dirs = {window[centerH][0],window[windowSize-1][centerV],window[centerH][fifoSize-1],window[0][centerV]}&(~{curPose[21:20],curPose[23:22]});
 	
 //=======================================================
 // if maze Parameters Defined
@@ -205,7 +205,7 @@ else if (video_data_valid)
 		 // set start pose at random line
 		else if (cnt_v == 10'd16 && cnt_h==10'd0) // write startPose
 		begin
-			startPose[9:0]		<= 10'd16;
+			startPose[9:0]		<= 10'd68;
 			startPose[19:10]	<= stLeft[9:1]+stRight[9:1] + 10'd1;
 			stLeft 	= 10'd0;
 			stRight = 10'd0;
@@ -238,10 +238,10 @@ else if (video_data_valid)
 // Define next position
 //=======================================================
 
-wire [4:0] botton_c;
-wire [4:0] left_c;
-wire [4:0] upper_c;
-wire [4:0] right_c;
+wire [9:0] bottom_c;
+wire [9:0] left_c;
+wire [9:0] upper_c;
+wire [9:0] right_c;
 
 find_geometric_centers find_geometric_centers_inst(
 .clk(clk),
@@ -253,16 +253,16 @@ find_geometric_centers find_geometric_centers_inst(
 .cnt_h(cnt_h),
 .cnt_v(cnt_v),
 
-.botton_center(botton_c),
+.bottom_center(bottom_c),
 .left_center(left_c),
 .upper_center(upper_c),
 .right_center(right_c)
 );
 
-reg [4:0] botton_c_z = 5'd0;
-reg [4:0] left_c_z = 5'd0;
-reg [4:0] upper_c_z = 5'd0;
-reg [4:0] right_c_z = 5'd0;
+reg [9:0] bottom_c_z = 5'd0;
+reg [9:0] left_c_z = 5'd0;
+reg [9:0] upper_c_z = 5'd0;
+reg [9:0] right_c_z = 5'd0;
 
 //=======================================================
 // Current Pose definition
@@ -279,7 +279,7 @@ begin
 	else if (mazeParametersDefined)
 		if(frameStart && cnt_frame != 1'd0)
 			case (curPose[23:20])
-				4'b1000:curPose[19:0] 	<= {curPose[19:10] - centerH	+ botton_c_z + 1, curPose[9:0] + stepV};   // down
+				4'b1000:curPose[19:0] 	<= {curPose[19:10] - centerH	+ bottom_c_z + 1, curPose[9:0] + stepV};   // down
 				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0] - centerV + 1 + left_c_z};		// left
 				4'b0010:curPose[19:0] 	<= {curPose[19:10] - centerH + 1	+ upper_c_z, curPose[9:0] - stepV};		// up
 				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0] - centerV + 1 + right_c_z};		// right
@@ -287,11 +287,11 @@ begin
 			
 		else if (onLastPose & mazeParametersDefined)
 		begin
-			botton_c_z	= botton_c;
-			left_c_z		= left_c;
-			upper_c_z	= upper_c;
-			right_c_z	= right_c;
-			if (!emptyConers && !isStreight)
+			bottom_c_z	<= bottom_c;
+			left_c_z		<= left_c;
+			upper_c_z	<= upper_c;
+			right_c_z	<= right_c;
+			if (emptyConers && !isStreight)
 				curPose[23:20] <= next_possible_dirs;
 		end
 end
@@ -314,19 +314,19 @@ if (!mazeParametersDefined)
 else
 begin
 	if (onLastPose)
-		outdataReg<={8{window[centerH][centerV]}};
-	else if (cnt_h==curPose[19:10] || cnt_h==curPose[9:0])
+		outdataReg<={isStreight,emptyConers,6'b111111};
+	else if (cnt_h==curPose[19:10] || cnt_v==curPose[9:0])
 		outdataReg<=8'd150;
-	else if (cnt_h==1)
-		outdataReg<=8'd220;
-	else if (cnt_h==cnt_frame+2)
-		outdataReg<=8'd210;
 	
-	else if (cnt_h==botton_c)
+	else if (cnt_v==upper_c_z)
 		outdataReg<=8'd200;
-//	else if (cnt_h==(10'd701 - sum_up_ind))
-//		outdataReg<=8'd210;
-	
+	else if (cnt_v==(10'd287 - bottom_c_z))
+		outdataReg<=8'd200;
+	else if (cnt_h==left_c_z)
+		outdataReg<=8'd200;
+	else if (cnt_h==(10'd701 - right_c_z))
+		outdataReg<=8'd200;
+//	
 	else if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && cnt_h < curPose[19:10] + 10'd5)
 		outdataReg<=8'd200;
 	else
