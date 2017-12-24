@@ -1,5 +1,5 @@
 Analysis & Synthesis report for student
-Fri Dec 22 11:21:37 2017
+Sun Dec 24 21:12:07 2017
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -16,27 +16,34 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
  10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram
- 16. Source assignments for parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst
- 17. Parameter Settings for User Entity Instance: system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst|altpll:altpll_component
- 18. Parameter Settings for User Entity Instance: reset_generator:rst_gen_inst
- 19. Parameter Settings for User Entity Instance: student_block:student_block_inst
- 20. Parameter Settings for User Entity Instance: student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component
- 21. Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1
- 22. Parameter Settings for User Entity Instance: parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component
- 23. altpll Parameter Settings by Entity Instance
- 24. scfifo Parameter Settings by Entity Instance
- 25. Port Connectivity Checks: "parameter_ctrl:parameter_ctrl_inst|source:source_inst"
- 26. Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"
- 27. Port Connectivity Checks: "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1"
- 28. Port Connectivity Checks: "student_block:student_block_inst"
- 29. Elapsed Time Per Partition
- 30. Analysis & Synthesis Messages
- 31. Analysis & Synthesis Suppressed Messages
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram
+ 15. Source assignments for parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst
+ 16. Parameter Settings for User Entity Instance: system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst|altpll:altpll_component
+ 17. Parameter Settings for User Entity Instance: reset_generator:rst_gen_inst
+ 18. Parameter Settings for User Entity Instance: student_block:student_block_inst
+ 19. Parameter Settings for User Entity Instance: student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component
+ 20. Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1
+ 21. Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component
+ 22. Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_l|lpm_divide:LPM_DIVIDE_component
+ 23. Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_r|lpm_divide:LPM_DIVIDE_component
+ 24. Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_u|lpm_divide:LPM_DIVIDE_component
+ 25. Parameter Settings for User Entity Instance: parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component
+ 26. altpll Parameter Settings by Entity Instance
+ 27. scfifo Parameter Settings by Entity Instance
+ 28. Port Connectivity Checks: "parameter_ctrl:parameter_ctrl_inst|source:source_inst"
+ 29. Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_u"
+ 30. Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_r"
+ 31. Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_l"
+ 32. Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b"
+ 33. Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"
+ 34. Port Connectivity Checks: "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1"
+ 35. Port Connectivity Checks: "student_block:student_block_inst"
+ 36. Elapsed Time Per Partition
+ 37. Analysis & Synthesis Messages
+ 38. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -62,18 +69,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Dec 22 11:21:37 2017      ;
+; Analysis & Synthesis Status        ; Successful - Sun Dec 24 21:12:07 2017      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; student                                    ;
 ; Top-level Entity Name              ; student_top                                ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 676                                        ;
-;     Total combinational functions  ; 554                                        ;
-;     Dedicated logic registers      ; 410                                        ;
-; Total registers                    ; 410                                        ;
+; Total logic elements               ; 1,033                                      ;
+;     Total combinational functions  ; 922                                        ;
+;     Dedicated logic registers      ; 523                                        ;
+; Total registers                    ; 523                                        ;
 ; Total pins                         ; 25                                         ;
 ; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 8,192                                      ;
+; Total memory bits                  ; 15,360                                     ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
 ; Total PLLs                         ; 1                                          ;
 +------------------------------------+--------------------------------------------+
@@ -200,6 +207,7 @@ applicable agreement for further details.
 ; ../MGF/PLL/pll_40_mhz.v          ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/PLL/pll_40_mhz.v               ;         ;
 ; ../MGF/ALTCLKCTRL/global_buf.v   ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v        ;         ;
 ; ../MGF/SOURCE/source.v           ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/SOURCE/source.v                ;         ;
+; ../MGF/DIVIDER/divider_16.v      ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v           ;         ;
 ; ../HDL/find_geometric_centers.v  ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/find_geometric_centers.v       ;         ;
 ; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altpll.tdf               ;         ;
 ; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc           ;         ;
@@ -220,6 +228,14 @@ applicable agreement for further details.
 ; db/cntr_p8b.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_p8b.tdf             ;         ;
 ; db/cntr_da7.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_da7.tdf             ;         ;
 ; db/cntr_1ab.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_1ab.tdf             ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf           ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc          ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc      ;         ;
+; db/lpm_divide_69u.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/lpm_divide_69u.tdf       ;         ;
+; db/sign_div_unsign_mlh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/sign_div_unsign_mlh.tdf  ;         ;
+; db/alt_u_div_m5f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/alt_u_div_m5f.tdf        ;         ;
+; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/add_sub_unc.tdf          ;         ;
+; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/add_sub_vnc.tdf          ;         ;
 ; altsource_probe.v                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe.v        ;         ;
 ; altsource_probe_body.vhd         ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe_body.vhd ;         ;
 ; sld_rom_sr.vhd                   ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_rom_sr.vhd           ;         ;
@@ -233,32 +249,32 @@ applicable agreement for further details.
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                                                                          ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 676                                                                                                                                            ;
+; Estimated Total logic elements              ; 1,033                                                                                                                                          ;
 ;                                             ;                                                                                                                                                ;
-; Total combinational functions               ; 554                                                                                                                                            ;
+; Total combinational functions               ; 922                                                                                                                                            ;
 ; Logic element usage by number of LUT inputs ;                                                                                                                                                ;
-;     -- 4 input functions                    ; 210                                                                                                                                            ;
-;     -- 3 input functions                    ; 148                                                                                                                                            ;
-;     -- <=2 input functions                  ; 196                                                                                                                                            ;
+;     -- 4 input functions                    ; 254                                                                                                                                            ;
+;     -- 3 input functions                    ; 276                                                                                                                                            ;
+;     -- <=2 input functions                  ; 392                                                                                                                                            ;
 ;                                             ;                                                                                                                                                ;
 ; Logic elements by mode                      ;                                                                                                                                                ;
-;     -- normal mode                          ; 418                                                                                                                                            ;
-;     -- arithmetic mode                      ; 136                                                                                                                                            ;
+;     -- normal mode                          ; 606                                                                                                                                            ;
+;     -- arithmetic mode                      ; 316                                                                                                                                            ;
 ;                                             ;                                                                                                                                                ;
-; Total registers                             ; 410                                                                                                                                            ;
-;     -- Dedicated logic registers            ; 410                                                                                                                                            ;
+; Total registers                             ; 523                                                                                                                                            ;
+;     -- Dedicated logic registers            ; 523                                                                                                                                            ;
 ;     -- I/O registers                        ; 0                                                                                                                                              ;
 ;                                             ;                                                                                                                                                ;
 ; I/O pins                                    ; 25                                                                                                                                             ;
-; Total memory bits                           ; 8192                                                                                                                                           ;
+; Total memory bits                           ; 15360                                                                                                                                          ;
 ; Embedded Multiplier 9-bit elements          ; 0                                                                                                                                              ;
 ; Total PLLs                                  ; 1                                                                                                                                              ;
 ;     -- PLLs                                 ; 1                                                                                                                                              ;
 ;                                             ;                                                                                                                                                ;
 ; Maximum fan-out node                        ; system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz|global_buf_altclkctrl_uhi:global_buf_altclkctrl_uhi_component|wire_clkctrl1_outclk ;
-; Maximum fan-out                             ; 273                                                                                                                                            ;
-; Total fan-out                               ; 3103                                                                                                                                           ;
-; Average fan-out                             ; 3.00                                                                                                                                           ;
+; Maximum fan-out                             ; 393                                                                                                                                            ;
+; Total fan-out                               ; 4599                                                                                                                                           ;
+; Average fan-out                             ; 3.02                                                                                                                                           ;
 +---------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -267,7 +283,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                               ; Library Name ;
 +---------------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |student_top                                                              ; 554 (1)           ; 410 (0)      ; 8192        ; 0            ; 0       ; 0         ; 25   ; 0            ; |student_top                                                                                                                                                                                                                                                      ; work         ;
+; |student_top                                                              ; 922 (1)           ; 523 (0)      ; 15360       ; 0            ; 0       ; 0         ; 25   ; 0            ; |student_top                                                                                                                                                                                                                                                      ; work         ;
 ;    |adc_controller:adc_ctrl_inst|                                         ; 46 (46)           ; 54 (54)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|adc_controller:adc_ctrl_inst                                                                                                                                                                                                                         ; work         ;
 ;    |dac_controller:dac_ctrl_inst|                                         ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|dac_controller:dac_ctrl_inst                                                                                                                                                                                                                         ; work         ;
 ;    |parameter_ctrl:parameter_ctrl_inst|                                   ; 73 (0)            ; 108 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst                                                                                                                                                                                                                   ; work         ;
@@ -277,19 +293,25 @@ applicable agreement for further details.
 ;                |altsource_probe_impl:\wider_source_gen:wider_source_inst| ; 69 (56)           ; 108 (101)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst                                              ; work         ;
 ;                   |sld_rom_sr:\no_instance_id_gen:rom_info_inst|          ; 13 (13)           ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst ; work         ;
 ;    |reset_generator:rst_gen_inst|                                         ; 17 (17)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|reset_generator:rst_gen_inst                                                                                                                                                                                                                         ; work         ;
-;    |sld_hub:auto_hub|                                                     ; 115 (1)           ; 78 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub                                                                                                                                                                                                                                     ; work         ;
-;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                      ; 114 (77)          ; 78 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                        ; work         ;
-;          |sld_rom_sr:hub_info_reg|                                        ; 20 (20)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                ; work         ;
+;    |sld_hub:auto_hub|                                                     ; 113 (1)           ; 78 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub                                                                                                                                                                                                                                     ; work         ;
+;       |sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|                      ; 112 (76)          ; 78 (50)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst                                                                                                                                                                                        ; work         ;
+;          |sld_rom_sr:hub_info_reg|                                        ; 19 (19)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg                                                                                                                                                                ; work         ;
 ;          |sld_shadow_jsm:shadow_jsm|                                      ; 17 (17)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_shadow_jsm:shadow_jsm                                                                                                                                                              ; work         ;
-;    |student_block:student_block_inst|                                     ; 302 (225)         ; 153 (106)    ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst                                                                                                                                                                                                                     ; work         ;
-;       |fifo_1kx16:fifo_1kx16_inst1|                                       ; 77 (0)            ; 47 (0)       ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1                                                                                                                                                                                         ; work         ;
-;          |scfifo:scfifo_component|                                        ; 77 (0)            ; 47 (0)       ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component                                                                                                                                                                 ; work         ;
-;             |scfifo_t171:auto_generated|                                  ; 77 (0)            ; 47 (0)       ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated                                                                                                                                      ; work         ;
-;                |a_dpfifo_gp61:dpfifo|                                     ; 77 (45)           ; 47 (18)      ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo                                                                                                                 ; work         ;
-;                   |altsyncram_52g1:FIFOram|                               ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram                                                                                         ; work         ;
+;    |student_block:student_block_inst|                                     ; 672 (423)         ; 266 (204)    ; 15360       ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst                                                                                                                                                                                                                     ; work         ;
+;       |fifo_1kx16:fifo_1kx16_inst1|                                       ; 77 (0)            ; 47 (0)       ; 15360       ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1                                                                                                                                                                                         ; work         ;
+;          |scfifo:scfifo_component|                                        ; 77 (0)            ; 47 (0)       ; 15360       ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component                                                                                                                                                                 ; work         ;
+;             |scfifo_t171:auto_generated|                                  ; 77 (0)            ; 47 (0)       ; 15360       ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated                                                                                                                                      ; work         ;
+;                |a_dpfifo_gp61:dpfifo|                                     ; 77 (45)           ; 47 (18)      ; 15360       ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo                                                                                                                 ; work         ;
+;                   |altsyncram_52g1:FIFOram|                               ; 0 (0)             ; 0 (0)        ; 15360       ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram                                                                                         ; work         ;
 ;                   |cntr_1ab:wr_ptr|                                       ; 11 (11)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_1ab:wr_ptr                                                                                                 ; work         ;
 ;                   |cntr_da7:usedw_counter|                                ; 11 (11)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_da7:usedw_counter                                                                                          ; work         ;
 ;                   |cntr_p8b:rd_ptr_msb|                                   ; 10 (10)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_p8b:rd_ptr_msb                                                                                             ; work         ;
+;       |find_geometric_centers:find_geometric_centers_inst1|               ; 172 (85)          ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1                                                                                                                                                                 ; work         ;
+;          |divider_16:divider_16_inst_b|                                   ; 87 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b                                                                                                                                    ; work         ;
+;             |lpm_divide:LPM_DIVIDE_component|                             ; 87 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component                                                                                                    ; work         ;
+;                |lpm_divide_69u:auto_generated|                            ; 87 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated                                                                      ; work         ;
+;                   |sign_div_unsign_mlh:divider|                           ; 87 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated|sign_div_unsign_mlh:divider                                          ; work         ;
+;                      |alt_u_div_m5f:divider|                              ; 87 (87)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_m5f:divider                    ; work         ;
 ;    |system_clock:sys_clk_inst|                                            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|system_clock:sys_clk_inst                                                                                                                                                                                                                            ; work         ;
 ;       |global_buf:global_buf_clk_108_mhz|                                 ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz                                                                                                                                                                                          ; work         ;
 ;          |global_buf_altclkctrl_uhi:global_buf_altclkctrl_uhi_component|  ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz|global_buf_altclkctrl_uhi:global_buf_altclkctrl_uhi_component                                                                                                                            ; work         ;
@@ -311,68 +333,45 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                        ;
-+--------+------------------------------+---------+--------------+--------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
-; Vendor ; IP Core Name                 ; Version ; Release Date ; License Type ; Entity Instance                                                           ; IP Include File                                                  ;
-+--------+------------------------------+---------+--------------+--------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
-; Altera ; In-System Sources and Probes ; 13.1    ; N/A          ; N/A          ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst        ; C:/Users/metel/QuartusProjects/v.1.0/MGF/SOURCE/source.v         ;
-; Altera ; FIFO                         ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1 ; C:/Users/metel/QuartusProjects/v.1.0/MGF/FIFO/fifo_1kx16.v       ;
-; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_13_mhz   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
-; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz  ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
-; Altera ; ALTPLL                       ; 13.1    ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst         ; C:/Users/metel/QuartusProjects/v.1.0/MGF/PLL/pll_40_mhz.v        ;
-+--------+------------------------------+---------+--------------+--------------+---------------------------------------------------------------------------+------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                                                                             ;
++--------+------------------------------+---------+--------------+--------------+--------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+; Vendor ; IP Core Name                 ; Version ; Release Date ; License Type ; Entity Instance                                                                                                                ; IP Include File                                                  ;
++--------+------------------------------+---------+--------------+--------------+--------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+; Altera ; In-System Sources and Probes ; 13.1    ; N/A          ; N/A          ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst                                                             ; C:/Users/metel/QuartusProjects/v.1.0/MGF/SOURCE/source.v         ;
+; Altera ; FIFO                         ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1                                                      ; C:/Users/metel/QuartusProjects/v.1.0/MGF/FIFO/fifo_1kx16.v       ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_l ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_r ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_u ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
+; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_13_mhz                                                        ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
+; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz                                                       ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
+; Altera ; ALTPLL                       ; 13.1    ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst                                                              ; C:/Users/metel/QuartusProjects/v.1.0/MGF/PLL/pll_40_mhz.v        ;
++--------+------------------------------+---------+--------------+--------------+--------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                 ;
-+-------------------------------------------------------+------------------------------------------------------------+
-; Register name                                         ; Reason for Removal                                         ;
-+-------------------------------------------------------+------------------------------------------------------------+
-; student_block:student_block_inst|window[0][9]         ; Lost fanout                                                ;
-; student_block:student_block_inst|window[0][10]        ; Lost fanout                                                ;
-; student_block:student_block_inst|window[0][11]        ; Lost fanout                                                ;
-; student_block:student_block_inst|window[0][12]        ; Lost fanout                                                ;
-; student_block:student_block_inst|window[0][13]        ; Lost fanout                                                ;
-; student_block:student_block_inst|window[0][14]        ; Lost fanout                                                ;
-; student_block:student_block_inst|window[0][15]        ; Lost fanout                                                ;
-; student_block:student_block_inst|startPose[0..3,5..9] ; Stuck at GND due to stuck port data_in                     ;
-; student_block:student_block_inst|curPose[1,2]         ; Stuck at GND due to stuck port data_in                     ;
-; student_block:student_block_inst|endPose[2,3,5..7,9]  ; Stuck at GND due to stuck port data_in                     ;
-; student_block:student_block_inst|curPose[0,3,5..9]    ; Stuck at GND due to stuck port data_in                     ;
-; student_block:student_block_inst|outdataReg[2]        ; Merged with student_block:student_block_inst|outdataReg[4] ;
-; student_block:student_block_inst|outdataReg[0]        ; Merged with student_block:student_block_inst|outdataReg[1] ;
-; adc_controller:adc_ctrl_inst|comp_sync_mstb[2]        ; Merged with adc_controller:adc_ctrl_inst|pulse[0]          ;
-; student_block:student_block_inst|endPose[1,4,8]       ; Merged with student_block:student_block_inst|endPose[0]    ;
-; student_block:student_block_inst|fifo_enable[0]       ; Stuck at VCC due to stuck port data_in                     ;
-; Total Number of Removed Registers = 38                ;                                                            ;
-+-------------------------------------------------------+------------------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                             ;
-+-----------------------------------------------+---------------------------+---------------------------------------------+
-; Register name                                 ; Reason for Removal        ; Registers Removed due to This Register      ;
-+-----------------------------------------------+---------------------------+---------------------------------------------+
-; student_block:student_block_inst|startPose[9] ; Stuck at GND              ; student_block:student_block_inst|curPose[9] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[8] ; Stuck at GND              ; student_block:student_block_inst|curPose[8] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[7] ; Stuck at GND              ; student_block:student_block_inst|curPose[7] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[6] ; Stuck at GND              ; student_block:student_block_inst|curPose[6] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[5] ; Stuck at GND              ; student_block:student_block_inst|curPose[5] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[3] ; Stuck at GND              ; student_block:student_block_inst|curPose[3] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[2] ; Stuck at GND              ; student_block:student_block_inst|curPose[2] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[1] ; Stuck at GND              ; student_block:student_block_inst|curPose[1] ;
-;                                               ; due to stuck port data_in ;                                             ;
-; student_block:student_block_inst|startPose[0] ; Stuck at GND              ; student_block:student_block_inst|curPose[0] ;
-;                                               ; due to stuck port data_in ;                                             ;
-+-----------------------------------------------+---------------------------+---------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                  ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
+; Register name                                                                                            ; Reason for Removal                                       ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
+; student_block:student_block_inst|startPose[0..3,5..9]                                                    ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|endPose[2,3,5..7,9]                                                     ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_right[4]        ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_left[4]         ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_right[1..3]     ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_left[2,3]       ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_right[0]        ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_left[0,1]       ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_left_ind[0..9]  ; Stuck at GND due to stuck port data_in                   ;
+; student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_right_ind[0..9] ; Stuck at GND due to stuck port data_in                   ;
+; adc_controller:adc_ctrl_inst|comp_sync_mstb[2]                                                           ; Merged with adc_controller:adc_ctrl_inst|pulse[0]        ;
+; student_block:student_block_inst|endPose[1,4,8]                                                          ; Merged with student_block:student_block_inst|endPose[0]  ;
+; student_block:student_block_inst|left_c_z[1..4]                                                          ; Merged with student_block:student_block_inst|left_c_z[0] ;
+; student_block:student_block_inst|right_c_z[0..4]                                                         ; Merged with student_block:student_block_inst|left_c_z[0] ;
+; student_block:student_block_inst|fifo_enable[0]                                                          ; Stuck at VCC due to stuck port data_in                   ;
+; Total Number of Removed Registers = 59                                                                   ;                                                          ;
++----------------------------------------------------------------------------------------------------------+----------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -380,12 +379,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 410   ;
-; Number of registers using Synchronous Clear  ; 52    ;
-; Number of registers using Synchronous Load   ; 42    ;
+; Total registers                              ; 523   ;
+; Number of registers using Synchronous Clear  ; 77    ;
+; Number of registers using Synchronous Load   ; 66    ;
 ; Number of registers using Asynchronous Clear ; 52    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 223   ;
+; Number of registers using Clock Enable       ; 332   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -410,21 +409,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                                                                        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|hold_reg[4]                                                  ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|window[0][1]                                                                                                                                                                                                                        ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|cnt_h[8]                                                                                                                                                                                                                            ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|cnt_v[5]                                                                                                                                                                                                                            ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |student_top|reset_generator:rst_gen_inst|timer_cnt[3]                                                                                                                                                                                                                            ;
-; 4:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|shift_reg[4]                                                 ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|word_counter[2] ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|WORD_SR[3]      ;
-; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|stRight[2]                                                                                                                                                                                                                          ;
-; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|stLeft[4]                                                                                                                                                                                                                           ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|hold_reg[11]                                                 ;
+; 3:1                ; 106 bits  ; 212 LEs       ; 106 LEs              ; 106 LEs                ; Yes        ; |student_top|student_block:student_block_inst|window[7][8]                                                                                                                                                                                                                        ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|cnt_h[3]                                                                                                                                                                                                                            ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|cnt_v[0]                                                                                                                                                                                                                            ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |student_top|reset_generator:rst_gen_inst|timer_cnt[0]                                                                                                                                                                                                                            ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|shift_reg[1]                                                 ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|word_counter[0] ;
+; 5:1                ; 15 bits   ; 45 LEs        ; 15 LEs               ; 30 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|sum_bottom_ind[1]                                                                                                                                                               ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|curPose[23]                                                                                                                                                                                                                         ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst|altsource_probe:altsource_probe_component|altsource_probe_body:altsource_probe_body_inst|altsource_probe_impl:\wider_source_gen:wider_source_inst|sld_rom_sr:\no_instance_id_gen:rom_info_inst|WORD_SR[2]      ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|stRight[3]                                                                                                                                                                                                                          ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 9 LEs                ; 27 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|stLeft[3]                                                                                                                                                                                                                           ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 2 LEs                ; 22 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|curPose[1]                                                                                                                                                                                                                          ;
+; 19:1               ; 7 bits    ; 84 LEs        ; 14 LEs               ; 70 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|curPose[2]                                                                                                                                                                                                                          ;
+; 13:1               ; 9 bits    ; 72 LEs        ; 18 LEs               ; 54 LEs                 ; Yes        ; |student_top|student_block:student_block_inst|curPose[15]                                                                                                                                                                                                                         ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|hub_minor_ver_reg[0]                                                                                                                                                                                   ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|mixer_addr_reg[4]                                                                                                                                                                                      ;
 ; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|word_counter[1]                                                                                                                                                                ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|irsr_reg[2]                                                                                                                                                                                            ;
-; 34:1               ; 4 bits    ; 88 LEs        ; 56 LEs               ; 32 LEs                 ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[3]                                                                                                                                                                                     ;
+; 34:1               ; 4 bits    ; 88 LEs        ; 60 LEs               ; 28 LEs                 ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|design_hash_reg[3]                                                                                                                                                                                     ;
 ; 20:1               ; 4 bits    ; 52 LEs        ; 36 LEs               ; 16 LEs                 ; Yes        ; |student_top|sld_hub:auto_hub|sld_jtag_hub:\jtag_hub_gen:sld_jtag_hub_inst|sld_rom_sr:hub_info_reg|WORD_SR[1]                                                                                                                                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -917,6 +921,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; centerH        ; 15    ; Signed Integer                                       ;
 ; windowSize     ; 31    ; Signed Integer                                       ;
 ; fifoSize       ; 16    ; Signed Integer                                       ;
+; stepH          ; 8     ; Signed Integer                                       ;
+; stepV          ; 4     ; Signed Integer                                       ;
 +----------------+-------+------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -954,9 +960,103 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+----------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                     ;
 +----------------+-------+----------------------------------------------------------------------------------------------------------+
-; stepV          ; 00100 ; Unsigned Binary                                                                                          ;
-; stepH          ; 01000 ; Unsigned Binary                                                                                          ;
+; centerV        ; 8     ; Signed Integer                                                                                           ;
+; centerH        ; 15    ; Signed Integer                                                                                           ;
+; stepH          ; 8     ; Signed Integer                                                                                           ;
+; stepV          ; 4     ; Signed Integer                                                                                           ;
 +----------------+-------+----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                                                                                                 ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 10             ; Signed Integer                                                                                                                                       ;
+; LPM_WIDTHD             ; 5              ; Signed Integer                                                                                                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                                                                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                                                                                              ;
+; MAXIMIZE_SPEED         ; 6              ; Untyped                                                                                                                                              ;
+; CBXI_PARAMETER         ; lpm_divide_69u ; Untyped                                                                                                                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                                                                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                                                                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                                                                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                                                                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                                                                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                                                                                       ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_l|lpm_divide:LPM_DIVIDE_component ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                                                                                                 ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 10             ; Signed Integer                                                                                                                                       ;
+; LPM_WIDTHD             ; 5              ; Signed Integer                                                                                                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                                                                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                                                                                              ;
+; MAXIMIZE_SPEED         ; 6              ; Untyped                                                                                                                                              ;
+; CBXI_PARAMETER         ; lpm_divide_69u ; Untyped                                                                                                                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                                                                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                                                                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                                                                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                                                                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                                                                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                                                                                       ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_r|lpm_divide:LPM_DIVIDE_component ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                                                                                                 ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 10             ; Signed Integer                                                                                                                                       ;
+; LPM_WIDTHD             ; 5              ; Signed Integer                                                                                                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                                                                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                                                                                              ;
+; MAXIMIZE_SPEED         ; 6              ; Untyped                                                                                                                                              ;
+; CBXI_PARAMETER         ; lpm_divide_69u ; Untyped                                                                                                                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                                                                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                                                                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                                                                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                                                                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                                                                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                                                                                       ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_u|lpm_divide:LPM_DIVIDE_component ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                                                                                                                 ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+; LPM_WIDTHN             ; 10             ; Signed Integer                                                                                                                                       ;
+; LPM_WIDTHD             ; 5              ; Signed Integer                                                                                                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                                                                                                              ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                                                                                                              ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                                                                                                              ;
+; MAXIMIZE_SPEED         ; 6              ; Untyped                                                                                                                                              ;
+; CBXI_PARAMETER         ; lpm_divide_69u ; Untyped                                                                                                                                              ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                                                                                                              ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                                                                                                              ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                                                                                                           ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                                                                                                         ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                                                                                                         ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                                                                                                       ;
++------------------------+----------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1022,16 +1122,53 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"        ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port          ; Type   ; Severity ; Details                                                                             ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; botton_center ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; left_center   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; upper_center  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; right_center  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_u" ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                          ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; remain ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.         ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_r" ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                          ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; remain ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.         ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_l" ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                          ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; remain ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.         ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b" ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                          ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+; remain ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.         ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"                                                      ;
++---------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                                                                           ;
++---------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------+
+; botton_center ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (5 bits) it drives; bit(s) "botton_center[9..5]" have no fanouts ;
+; left_center   ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (5 bits) it drives; bit(s) "left_center[9..5]" have no fanouts   ;
+; upper_center  ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (5 bits) it drives; bit(s) "upper_center[9..5]" have no fanouts  ;
+; upper_center  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                               ;
+; right_center  ; Output ; Warning  ; Output or bidir port (10 bits) is wider than the port expression (5 bits) it drives; bit(s) "right_center[9..5]" have no fanouts  ;
++---------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------+
@@ -1057,7 +1194,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+--------------+
 ; Partition Name   ; Elapsed Time ;
 +------------------+--------------+
-; Top              ; 00:00:01     ;
+; Top              ; 00:00:02     ;
 ; sld_hub:auto_hub ; 00:00:00     ;
 +------------------+--------------+
 
@@ -1068,7 +1205,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Fri Dec 22 11:21:31 2017
+    Info: Processing started: Sun Dec 24 21:11:59 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off student -c student
 Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/fifo/fifo_1kx16.v
@@ -1100,8 +1237,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
     Info (12023): Found entity 1: divider_16
 Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/find_geometric_centers.v
     Info (12023): Found entity 1: find_geometric_centers
-Warning (10236): Verilog HDL Implicit Net warning at student_block.v(126): created implicit net for "fifo_wrreq"
-Warning (10236): Verilog HDL Implicit Net warning at student_block.v(127): created implicit net for "fifo_rdreq"
+Warning (10236): Verilog HDL Implicit Net warning at student_block.v(129): created implicit net for "fifo_wrreq"
+Warning (10236): Verilog HDL Implicit Net warning at student_block.v(130): created implicit net for "fifo_rdreq"
+Warning (10236): Verilog HDL Implicit Net warning at student_block.v(247): created implicit net for "wind_wire"
 Info (12127): Elaborating entity "student_top" for the top level hierarchy
 Info (12128): Elaborating entity "system_clock" for hierarchy "system_clock:sys_clk_inst"
 Info (12128): Elaborating entity "pll_40_mhz" for hierarchy "system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst"
@@ -1174,16 +1312,17 @@ Info (12128): Elaborating entity "global_buf_altclkctrl_uhi" for hierarchy "syst
 Info (12128): Elaborating entity "reset_generator" for hierarchy "reset_generator:rst_gen_inst"
 Info (12128): Elaborating entity "adc_controller" for hierarchy "adc_controller:adc_ctrl_inst"
 Info (12128): Elaborating entity "student_block" for hierarchy "student_block:student_block_inst"
-Warning (10036): Verilog HDL or VHDL warning at student_block.v(164): object "isStreight" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at student_block.v(165): object "emptyConers" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at student_block.v(166): object "next_possible_dirs" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at student_block.v(255): object "botton_c_z" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at student_block.v(256): object "left_c_z" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at student_block.v(257): object "upper_c_z" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at student_block.v(258): object "right_c_z" assigned a value but never read
-Warning (10855): Verilog HDL warning at student_block.v(46): initial value for variable window should be constant
-Warning (10230): Verilog HDL assignment warning at student_block.v(149): truncated value with size 32 to match size of target (6)
-Warning (10230): Verilog HDL assignment warning at student_block.v(154): truncated value with size 32 to match size of target (6)
+Warning (10036): Verilog HDL or VHDL warning at student_block.v(247): object "wind_wire" assigned a value but never read
+Warning (10855): Verilog HDL warning at student_block.v(49): initial value for variable window should be constant
+Warning (10230): Verilog HDL assignment warning at student_block.v(152): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at student_block.v(157): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at student_block.v(247): truncated value with size 4 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at student_block.v(287): truncated value with size 64 to match size of target (20)
+Warning (10230): Verilog HDL assignment warning at student_block.v(288): truncated value with size 64 to match size of target (20)
+Warning (10230): Verilog HDL assignment warning at student_block.v(289): truncated value with size 64 to match size of target (20)
+Warning (10230): Verilog HDL assignment warning at student_block.v(290): truncated value with size 64 to match size of target (20)
+Info (10264): Verilog HDL Case Statement information at student_block.v(286): all case item expressions in this case statement are onehot
+Warning (10230): Verilog HDL assignment warning at student_block.v(300): truncated value with size 5 to match size of target (4)
 Info (12128): Elaborating entity "fifo_1kx16" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1"
 Info (12128): Elaborating entity "scfifo" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component"
 Info (12130): Elaborated megafunction instantiation "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component"
@@ -1222,6 +1361,35 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/cntr
     Info (12023): Found entity 1: cntr_1ab
 Info (12128): Elaborating entity "cntr_1ab" for hierarchy "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|cntr_1ab:wr_ptr"
 Info (12128): Elaborating entity "find_geometric_centers" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1"
+Warning (10230): Verilog HDL assignment warning at find_geometric_centers.v(58): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at find_geometric_centers.v(67): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at find_geometric_centers.v(75): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at find_geometric_centers.v(83): truncated value with size 32 to match size of target (10)
+Info (12128): Elaborating entity "divider_16" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b"
+Info (12128): Elaborating entity "lpm_divide" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component"
+Info (12130): Elaborated megafunction instantiation "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component"
+Info (12133): Instantiated megafunction "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component" with the following parameter:
+    Info (12134): Parameter "lpm_drepresentation" = "UNSIGNED"
+    Info (12134): Parameter "lpm_hint" = "MAXIMIZE_SPEED=6,LPM_REMAINDERPOSITIVE=TRUE"
+    Info (12134): Parameter "lpm_nrepresentation" = "UNSIGNED"
+    Info (12134): Parameter "lpm_type" = "LPM_DIVIDE"
+    Info (12134): Parameter "lpm_widthd" = "5"
+    Info (12134): Parameter "lpm_widthn" = "10"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_69u.tdf
+    Info (12023): Found entity 1: lpm_divide_69u
+Info (12128): Elaborating entity "lpm_divide_69u" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated"
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_mlh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_mlh
+Info (12128): Elaborating entity "sign_div_unsign_mlh" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated|sign_div_unsign_mlh:divider"
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_m5f.tdf
+    Info (12023): Found entity 1: alt_u_div_m5f
+Info (12128): Elaborating entity "alt_u_div_m5f" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_m5f:divider"
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_unc.tdf
+    Info (12023): Found entity 1: add_sub_unc
+Info (12128): Elaborating entity "add_sub_unc" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_m5f:divider|add_sub_unc:add_sub_0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_vnc.tdf
+    Info (12023): Found entity 1: add_sub_vnc
+Info (12128): Elaborating entity "add_sub_vnc" for hierarchy "student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst1|divider_16:divider_16_inst_b|lpm_divide:LPM_DIVIDE_component|lpm_divide_69u:auto_generated|sign_div_unsign_mlh:divider|alt_u_div_m5f:divider|add_sub_vnc:add_sub_1"
 Info (12128): Elaborating entity "dac_controller" for hierarchy "dac_controller:dac_ctrl_inst"
 Info (12128): Elaborating entity "parameter_ctrl" for hierarchy "parameter_ctrl:parameter_ctrl_inst"
 Info (12128): Elaborating entity "source" for hierarchy "parameter_ctrl:parameter_ctrl_inst|source:source_inst"
@@ -1242,18 +1410,9 @@ Warning (12010): Port "probe" on the entity instantiation of "altsource_probe_co
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
         Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[15]"
-Warning (14284): Synthesized away the following node(s):
-    Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[8]"
-        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[9]"
-        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[10]"
-        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[11]"
-        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[12]"
-        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[13]"
-        Warning (14320): Synthesized away node "student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1|scfifo:scfifo_component|scfifo_t171:auto_generated|a_dpfifo_gp61:dpfifo|altsyncram_52g1:FIFOram|q_b[14]"
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
-Info (17049): 7 registers lost all their fanouts during netlist optimizations.
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
@@ -1261,16 +1420,16 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (144001): Generated suppressed messages file C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/student.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 738 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1102 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 13 output pins
-    Info (21061): Implemented 697 logic cells
-    Info (21064): Implemented 8 RAM segments
+    Info (21061): Implemented 1054 logic cells
+    Info (21064): Implemented 15 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 27 warnings
-    Info: Peak virtual memory: 629 megabytes
-    Info: Processing ended: Fri Dec 22 11:21:37 2017
-    Info: Elapsed time: 00:00:06
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnings
+    Info: Peak virtual memory: 631 megabytes
+    Info: Processing ended: Sun Dec 24 21:12:07 2017
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:06
 
 

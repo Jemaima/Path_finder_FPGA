@@ -18,7 +18,7 @@ Z3 o-work work -O0
 !i10b 1
 !s100 e^6LZDd;88<LEY[OY>20i0
 !s85 0
-!s108 1513930607.054000
+!s108 1514141319.236000
 !s107 ../../MGF/DIVIDER/divider_16.v|
 !s90 -reportprogress|300|../../MGF/DIVIDER/divider_16.v|-novopt|-work|work|
 !s101 -O0
@@ -37,7 +37,7 @@ R3
 !i10b 1
 !s100 8KODQ<L[]DJ7el:JhQg5P1
 !s85 0
-!s108 1513930606.945000
+!s108 1514141319.063000
 !s107 ../../MGF/FIFO/fifo_1kx16.v|
 !s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx16.v|-novopt|-work|work|
 !s101 -O0
@@ -61,10 +61,10 @@ R3
 !s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx32.v|-novopt|-work|work|
 !s101 -O0
 vfind_geometric_centers
-IhOi;7aXj3TOH`Q>idKI201
-V9NeC>XJz::0DLDZK>fcK<3
+IRRJW>kRi3ee<>Z0CM7SiV1
+VhV[ANmnjz^4Udl@>RnSB_1
 R1
-w1513889421
+w1514139117
 8../../HDL/find_geometric_centers.v
 F../../HDL/find_geometric_centers.v
 L0 1
@@ -73,17 +73,17 @@ r1
 31
 R3
 !i10b 1
-!s100 6Un@LWC3<JchQ8o<hDCfV3
+!s100 7?DnC[Z8K67YTzaa6:?jd0
 !s85 0
-!s108 1513930607.179000
+!s108 1514141319.404000
 !s107 ../../HDL/find_geometric_centers.v|
 !s90 -reportprogress|300|../../HDL/find_geometric_centers.v|-novopt|-work|work|
 !s101 -O0
 vstudent_block
-Ibff2mjhIIl6G0H=1d9Wkk3
-VK?GajFV6;M;QQ@n;ghn:N1
+IHRIl@[E2mNQ]VCOd6AHlB0
+VMB5TfE_kQc>_ZfYU0gG:V1
 R1
-w1513930600
+w1514141314
 8../../HDL/student_block.v
 F../../HDL/student_block.v
 L0 2
@@ -92,9 +92,9 @@ r1
 31
 R3
 !i10b 1
-!s100 3>`JB[eH[V5h<mhQCInK13
+!s100 e7ClW?FGY2Q21Y9_ATLKd3
 !s85 0
-!s108 1513930607.289000
+!s108 1514141319.582000
 !s107 ../../HDL/student_block.v|
 !s90 -reportprogress|300|../../HDL/student_block.v|-novopt|-work|work|
 !s101 -O0
@@ -112,7 +112,7 @@ R2
 r1
 !s85 0
 31
-!s108 1513930607.414000
+!s108 1514141319.768000
 !s107 tb.v|
 !s90 -reportprogress|300|-novopt|-work|work|tb.v|
 !s101 -O0
