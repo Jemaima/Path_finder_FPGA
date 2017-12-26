@@ -17,7 +17,7 @@ module student_block(
 // MAIN PARAMETERS
 //=======================================================
 
-reg mazeParametersDefined = 1'b0;		/// вход в лабиринт
+reg mazeParametersDefined = 1'b0;		/// вход в лабиринт 
 
 reg [4:0] path_width = 5'd0;				/// ширина пути
 reg [4:0] path_width_bottom = 5'd0;
@@ -33,12 +33,12 @@ parameter fifoSize 	= 10'd16;
 
 parameter stepH = 10'd8;
 parameter stepV = 10'd8;
+
 //=======================================================
 // initial scan windows generation
 //=======================================================
 
 reg [7:0] outdataReg = 8'd0; 
-
 reg [fifoSize:0] window [windowSize-1:0];
 
 generate
@@ -76,6 +76,14 @@ reg [9:0] cnt_frame = 10'd0;
 
 always @(posedge clk)
 begin
+if (!video_frame_valid)
+begin
+	cnt_v <= 10'd0;
+	cnt_h <= 10'd0;
+end
+
+else
+begin
 	if (frameStart) 
 	begin
 		cnt_frame <= cnt_frame + 10'd1;
@@ -90,6 +98,7 @@ begin
 		begin
 		cnt_h <= cnt_h + 10'd1;
 		end
+	end
 end
 
 //=======================================================
@@ -97,7 +106,7 @@ end
 //=======================================================
 
 wire video_data_in_bin;
-assign video_data_in_bin = (video_data_in>8'd150)?1'b1:1'b0;
+assign video_data_in_bin = (video_data_in>8'd50)?1'b1:1'b0;
 
 //=======================================================
 // detection edges to find first node
@@ -174,44 +183,49 @@ assign emptyConers =(!window[0][0] & !window[windowSize-1][0] & !window[0][fifoS
 assign isStreight = (window[0][centerV] & window[windowSize-1][centerV] & !window[centerH][0] & !window[centerH][fifoSize-1])
 					   ||(!window[0][centerV] & !window[windowSize-1][centerV] & window[centerH][0] & window[centerH][fifoSize-1]) & mazeParametersDefined;
 	
-assign next_possible_dirs = {window[centerH][0],window[windowSize-1][centerV],window[centerH][fifoSize-1],window[0][centerV]}&(~{curPose[21:20],curPose[23:22]});
-	
+assign next_possible_dirs = {window[centerH][0], window[windowSize-1][centerV], window[centerH][fifoSize-1], window[0][centerV]} & ~{curPose[21:20],curPose[23:22]};
+
 //=======================================================
 // if maze Parameters Defined
 //=======================================================
+
 reg [9:0] stLeft 	= 10'd0;
 reg [9:0] stRight = 10'd0;
 
 always @(posedge clk)
 
-if (!video_frame_valid && !mazeParametersDefined)
+if (!video_frame_valid)
 	begin
-	path_width = 5'd0;
-	path_width_bottom = 5'd0;
+	if (!mazeParametersDefined)
+		begin
+		path_width = 5'd0;
+		path_width_bottom = 5'd0;
+		end
+	stLeft 	= 10'd0;
+	stRight = 10'd0;
 	end
 
 else if (video_data_valid)
-// first frame processing
 	if (!mazeParametersDefined)
 	begin
 		 // define start Pose
-		if (cnt_v == 10'd15)
+		if (cnt_v == 10'd5)
 		begin
 			path_width 	<= path_width + video_data_in_bin;
 			stLeft 		<= posEdgeMaze ? cnt_h:stLeft;
 			stRight 		<= negEdgeMaze ? cnt_h:stRight;
 		end
 		
-		 // set start pose at random line
-		else if (cnt_v == 10'd16 && cnt_h==10'd0) // write startPose
+		// set start pose at random line
+		else if (cnt_v == 10'd10 && cnt_h==10'd0) // write startPose
 		begin
-			startPose[9:0]		<= 10'd68;
-			startPose[19:10]	<= stLeft[9:1]+stRight[9:1] + 10'd1;
-			stLeft 	= 10'd0;
-			stRight = 10'd0;
+			startPose[9:0]		<= 10'd20;
+			startPose[19:10]	<= stLeft[9:1] + stRight[9:1] + 10'd1;
+			stLeft  <= 10'd0;
+			stRight <= 10'd0;
 		end	
 		
-		else if (cnt_v == 10'd274) // define initial parameters al lvl 16
+		else if (cnt_v == 10'd270) // define initial parameters al lvl 16
 		begin
 			path_width_bottom 	<= path_width_bottom + video_data_in_bin;
 			stLeft 		<= posEdgeMaze ? cnt_h:stLeft;
@@ -220,20 +234,18 @@ else if (video_data_valid)
 		
 		else if (cnt_v == 10'd275 && cnt_h==10'd0) 
 		begin
-			endPose[9:0]	<=10'd275;
-			endPose[19:10]	<=stLeft[9:1]+stRight[9:1] + 10'd1;
+			endPose[9:0]	<= 10'd275;
+			endPose[19:10]	<= stLeft[9:1] + stRight[9:1] + 10'd1;
 		end	
 		
-		else if (cnt_v == 10'd287 && cnt_h==10'd701) /// если конец строки и последняя строка
+		else if (cnt_v == 10'd287 && cnt_h==10'd701 && ((startPose[19:10]-endPose[19:10])<10'd10 || (endPose[19:10]-startPose[19:10])<10'd10)) /// если конец строки и последняя строка
 		begin
-			stLeft 	= 10'd0;
-			stRight = 10'd0;
 			mazeParametersDefined <= 1'b1;  // maze defenition complete
 		end
 	end
-//	else if  (onLastPose && !window[centerH][centerV] && mazeParametersDefined==1'b1)
-//		mazeParametersDefined <= 1'b0;
-
+	else if  (onLastPose && !window[centerH][centerV])
+		mazeParametersDefined <= 1'b0;
+		
 //=======================================================
 // Define next position
 //=======================================================
@@ -274,25 +286,33 @@ begin
 	begin
 		curPose[23:20] <= 4'b1000;
 		curPose[19:0] <= startPose;
+		bottom_c_z <= 5'd0;
+      left_c_z <= 5'd0;
+		upper_c_z <= 5'd0;
+		right_c_z <= 5'd0;
 	end
 	
 	else if (mazeParametersDefined)
 		if(frameStart && cnt_frame != 1'd0)
 			case (curPose[23:20])
+//				4'b1000:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] + stepV};   // down
+//				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0]};		// left
+//				4'b0010:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] - stepV};		// up
+//				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0]};		// right
 				4'b1000:curPose[19:0] 	<= {curPose[19:10] - centerH	+ bottom_c_z + 1, curPose[9:0] + stepV};   // down
 				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0] - centerV + 1 + left_c_z};		// left
 				4'b0010:curPose[19:0] 	<= {curPose[19:10] - centerH + 1	+ upper_c_z, curPose[9:0] - stepV};		// up
 				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0] - centerV + 1 + right_c_z};		// right
 			endcase
 			
-		else if (onLastPose & mazeParametersDefined)
+		else if (onLastPose)
 		begin
 			bottom_c_z	<= bottom_c;
 			left_c_z		<= left_c;
 			upper_c_z	<= upper_c;
 			right_c_z	<= right_c;
-			if (emptyConers && !isStreight)
-				curPose[23:20] <= next_possible_dirs;
+			//if (emptyConers && !isStreight)
+				//curPose[23:20] <= next_possible_dirs;
 		end
 end
 
@@ -304,10 +324,16 @@ integer k,l;
 always @(posedge clk)
 // if parameters not defined
 if (!mazeParametersDefined)
+	
 	if (cnt_h==startPose[19:10] || cnt_v==startPose[9:0])
-	outdataReg<=8'd200;
+		outdataReg<=8'd255;
+	
 	else if (cnt_h==endPose[19:10] || cnt_v==endPose[9:0])
-	outdataReg<=8'd215;
+		outdataReg<=8'd255;
+	
+	else if (cnt_h<10'd30)
+		outdataReg<=cnt_v;
+	
 	else
 	outdataReg<={video_data_in_bin,7'd20};
 
@@ -315,22 +341,14 @@ else
 begin
 	if (onLastPose)
 		outdataReg<={isStreight,emptyConers,6'b111111};
-	else if (cnt_h==curPose[19:10] || cnt_v==curPose[9:0])
-		outdataReg<=8'd150;
-	
-	else if (cnt_v==upper_c_z)
+	else if (cnt_h==startPose[19:10] || cnt_v==startPose[9:0])
+		outdataReg<=8'd255;
+	else if (cnt_h==curPose[23:20])
 		outdataReg<=8'd200;
-	else if (cnt_v==(10'd287 - bottom_c_z))
-		outdataReg<=8'd200;
-	else if (cnt_h==left_c_z)
-		outdataReg<=8'd200;
-	else if (cnt_h==(10'd701 - right_c_z))
-		outdataReg<=8'd200;
-//	
-	else if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && cnt_h < curPose[19:10] + 10'd5)
-		outdataReg<=8'd200;
+	else if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && (cnt_h < curPose[19:10] + 10'd5))
+		outdataReg<=cnt_frame;
 	else
-	outdataReg<={video_data_in_bin,video_data_in_bin,5'd00};
+	outdataReg<={1'b0,video_data_in_bin,6'd00};
 end
 	
 assign video_data_ready = video_data_valid;
