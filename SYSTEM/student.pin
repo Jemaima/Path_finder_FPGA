@@ -90,7 +90,7 @@ GND                          : 19        : gnd    :                   :         
 altera_reserved_tdo          : 20        : output : 3.3-V LVTTL       :         : 1         : N              
 nCE                          : 21        :        :                   :         : 1         :                
 IN_CLK                       : 22        : input  : 3.3-V LVCMOS      :         : 1         : Y              
-auto_stp_external_clock_0    : 23        : input  : 2.5 V             :         : 1         : N              
+GND+                         : 23        :        :                   :         : 1         :                
 BURST                        : 24        : input  : 3.3-V LVCMOS      :         : 2         : Y              
 GND+                         : 25        :        :                   :         : 2         :                
 VCCIO2                       : 26        : power  :                   : 3.3V    : 2         :                

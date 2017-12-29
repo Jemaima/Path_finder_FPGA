@@ -14,7 +14,7 @@ module tb;
 	// Outputs
 	wire video_data_ready;
 	wire [7:0] video_data_out;
-	parameter nShots = 8;
+	parameter nShots = 10;
 
 	// Instantiate the Unit Under Test (UUT)
 	student_block uut (

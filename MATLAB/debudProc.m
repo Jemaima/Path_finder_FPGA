@@ -13,6 +13,7 @@ hsize = 702;
 nShots = 3; 
 procImageHF = double(zeros(nShots,vsize,hsize));
 outImage = testImageRawField;
+
 for z = 1:nShots
     for i = 1:vsize
         for j = 1:hsize
@@ -22,4 +23,4 @@ for z = 1:nShots
     outImage = horzcat(outImage,squeeze(procImageHF(z,:,:)));
 end
 
-figure, imshow(outImage, [0 255]);  
+figure, imshow(outImage(:,hsize+1:end), [0 255]);  

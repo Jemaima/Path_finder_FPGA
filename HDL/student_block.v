@@ -74,14 +74,26 @@ reg [9:0] cnt_h = 10'd0;
 reg [9:0] cnt_v = 10'd0;
 reg [9:0] cnt_frame = 10'd0;
 
+wire onLastPose;
+assign onLastPose = (cnt_h-centerH == curPose[19:10]) & (cnt_v-centerV == curPose[9:0]) & mazeParametersDefined;
+
+
 always @(posedge clk)
 begin
 if (!video_frame_valid)
 begin
 	cnt_v <= 10'd0;
 	cnt_h <= 10'd0;
+		if (frameStart) 
+	begin
+		cnt_frame <= cnt_frame + 10'd1;
+		end
 end
 
+else if  (mazeParametersDefined && onLastPose && !window[centerH][centerV])
+	cnt_frame<=0;
+	
+	
 else
 begin
 	if (frameStart) 
@@ -172,18 +184,17 @@ always @(posedge clk)
 // Node states
 //=======================================================	
 
-wire onLastPose;	
+//wire onLastPose;	
 wire isStreight;
 wire emptyConers;
-wire [4:0] next_possible_dirs;
+wire [3:0] next_possible_dirs;
 
 
-assign onLastPose = (cnt_h-centerH == curPose[19:10]) & (cnt_v-centerV == curPose[9:0]) & mazeParametersDefined;
 assign emptyConers =(!window[0][0] & !window[windowSize-1][0] & !window[0][fifoSize-1] & !window[windowSize-1][fifoSize-1]) & mazeParametersDefined;
 assign isStreight = (window[0][centerV] & window[windowSize-1][centerV] & !window[centerH][0] & !window[centerH][fifoSize-1])
 					   ||(!window[0][centerV] & !window[windowSize-1][centerV] & window[centerH][0] & window[centerH][fifoSize-1]) & mazeParametersDefined;
 	
-assign next_possible_dirs = {window[centerH][0], window[windowSize-1][centerV], window[centerH][fifoSize-1], window[0][centerV]} & ~{curPose[21:20],curPose[23:22]};
+assign next_possible_dirs  = {window[centerH][0], window[windowSize-1][centerV], window[centerH][fifoSize-1-3], window[0][centerV]};//  & ~{curPose[21:20],curPose[23:22]}; // & (~{curPose[21:20],curPose[23:22]});
 
 //=======================================================
 // if maze Parameters Defined
@@ -209,7 +220,7 @@ else if (video_data_valid)
 	if (!mazeParametersDefined)
 	begin
 		 // define start Pose
-		if (cnt_v == 10'd5)
+		if (cnt_v == 10'd15)
 		begin
 			path_width 	<= path_width + video_data_in_bin;
 			stLeft 		<= posEdgeMaze ? cnt_h:stLeft;
@@ -217,9 +228,9 @@ else if (video_data_valid)
 		end
 		
 		// set start pose at random line
-		else if (cnt_v == 10'd10 && cnt_h==10'd0) // write startPose
+		else if (cnt_v == 10'd20 && cnt_h==10'd0) // write startPose
 		begin
-			startPose[9:0]		<= 10'd20;
+			startPose[9:0]		<= 10'd30;
 			startPose[19:10]	<= stLeft[9:1] + stRight[9:1] + 10'd1;
 			stLeft  <= 10'd0;
 			stRight <= 10'd0;
@@ -245,74 +256,90 @@ else if (video_data_valid)
 	end
 	else if  (onLastPose && !window[centerH][centerV])
 		mazeParametersDefined <= 1'b0;
+	
 		
 //=======================================================
 // Define next position
 //=======================================================
 
-wire [9:0] bottom_c;
-wire [9:0] left_c;
-wire [9:0] upper_c;
-wire [9:0] right_c;
-
-find_geometric_centers find_geometric_centers_inst(
-.clk(clk),
-.video_frame_valid(video_frame_valid),
-.video_data_valid(video_data_valid),
-.mazeParametersDefined(mazeParametersDefined),
-.video_data_in_bin(video_data_in_bin), 
-.curPose(curPose),
-.cnt_h(cnt_h),
-.cnt_v(cnt_v),
-
-.bottom_center(bottom_c),
-.left_center(left_c),
-.upper_center(upper_c),
-.right_center(right_c)
-);
-
-reg [9:0] bottom_c_z = 5'd0;
-reg [9:0] left_c_z = 5'd0;
-reg [9:0] upper_c_z = 5'd0;
-reg [9:0] right_c_z = 5'd0;
+//wire [9:0] bottom_c;
+//wire [9:0] left_c;
+//wire [9:0] upper_c;
+//wire [9:0] right_c;
+//
+//find_geometric_centers find_geometric_centers_inst(
+//.clk(clk),
+//.video_frame_valid(video_frame_valid),
+//.video_data_valid(video_data_valid),
+//.mazeParametersDefined(mazeParametersDefined),
+//.video_data_in_bin(video_data_in_bin), 
+//.curPose(curPose),
+//.cnt_h(cnt_h),
+//.cnt_v(cnt_v),
+//
+//.bottom_center(bottom_c),
+//.left_center(left_c),
+//.upper_center(upper_c),
+//.right_center(right_c)
+//);
+//
+//reg [9:0] bottom_c_z = 5'd0;
+//reg [9:0] left_c_z = 5'd0;
+//reg [9:0] upper_c_z = 5'd0;
+//reg [9:0] right_c_z = 5'd0;
 
 //=======================================================
 // Current Pose definition
 //=======================================================
+
+reg isst=1'b0;
+reg empcon=1'b0;
+
+reg [3:0] npos = 4'd0;
+reg [3:0] windpos = 4'd0;
+
 always @(posedge clk)
 // set as Start if maze Parameters not Defined
 begin 
+	
 	if (!mazeParametersDefined && cnt_v == 10'd287 && cnt_h == 10'd0 )
 	begin
 		curPose[23:20] <= 4'b1000;
 		curPose[19:0] <= startPose;
-		bottom_c_z <= 5'd0;
-      left_c_z <= 5'd0;
-		upper_c_z <= 5'd0;
-		right_c_z <= 5'd0;
+//		bottom_c_z <= 5'd0;
+//      left_c_z <= 5'd0;
+//		upper_c_z <= 5'd0;
+//		right_c_z <= 5'd0;
 	end
 	
 	else if (mazeParametersDefined)
-		if(frameStart && cnt_frame != 1'd0)
+		if(frameStart) // && cnt_frame != 10'd0)
 			case (curPose[23:20])
-//				4'b1000:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] + stepV};   // down
-//				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0]};		// left
-//				4'b0010:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] - stepV};		// up
-//				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0]};		// right
-				4'b1000:curPose[19:0] 	<= {curPose[19:10] - centerH	+ bottom_c_z + 1, curPose[9:0] + stepV};   // down
-				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0] - centerV + 1 + left_c_z};		// left
-				4'b0010:curPose[19:0] 	<= {curPose[19:10] - centerH + 1	+ upper_c_z, curPose[9:0] - stepV};		// up
-				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0] - centerV + 1 + right_c_z};		// right
+				4'b1000:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] + stepV};   // down
+				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0]};		// left
+				4'b0010:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] - stepV};		// up
+				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0]};		// right
+//				4'b1000:curPose[19:0] 	<= {curPose[19:10] - centerH	+ bottom_c_z + 1, curPose[9:0] + stepV};   // down
+//				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0] - centerV + 1 + left_c_z};		// left
+//				4'b0010:curPose[19:0] 	<= {curPose[19:10] - centerH + 1	+ upper_c_z, curPose[9:0] - stepV};		// up
+//				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0] - centerV + 1 + right_c_z};		// right
 			endcase
 			
 		else if (onLastPose)
 		begin
-			bottom_c_z	<= bottom_c;
-			left_c_z		<= left_c;
-			upper_c_z	<= upper_c;
-			right_c_z	<= right_c;
-			//if (emptyConers && !isStreight)
-				//curPose[23:20] <= next_possible_dirs;
+//			bottom_c_z	<= bottom_c;
+//			left_c_z		<= left_c;
+//			upper_c_z	<= upper_c;
+//			right_c_z	<= right_c;
+			empcon <=emptyConers;
+			isst <= !isStreight;
+			npos <= ~{curPose[21:20],curPose[23:22]};
+			windpos <= next_possible_dirs;
+			if (emptyConers && !isStreight)
+				begin
+				curPose[23:20]  <= next_possible_dirs & ~{curPose[21:20],curPose[23:22]}; // & (~{curPose[21:20],curPose[23:22]}); // & ~{curPose[21:20],curPose[23:22]};
+				end
+				
 		end
 end
 
@@ -331,9 +358,6 @@ if (!mazeParametersDefined)
 	else if (cnt_h==endPose[19:10] || cnt_v==endPose[9:0])
 		outdataReg<=8'd255;
 	
-	else if (cnt_h<10'd30)
-		outdataReg<=cnt_v;
-	
 	else
 	outdataReg<={video_data_in_bin,7'd20};
 
@@ -341,14 +365,40 @@ else
 begin
 	if (onLastPose)
 		outdataReg<={isStreight,emptyConers,6'b111111};
-	else if (cnt_h==startPose[19:10] || cnt_v==startPose[9:0])
-		outdataReg<=8'd255;
+		//outdataReg<={isStreight,emptyConers,6'b111111};
+//	else if (cnt_h==startPose[19:10] || cnt_v==startPose[9:0])
+//		outdataReg<=8'd255;
 	else if (cnt_h==curPose[23:20])
 		outdataReg<=8'd200;
 	else if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && (cnt_h < curPose[19:10] + 10'd5))
-		outdataReg<=cnt_frame;
-	else
-	outdataReg<={1'b0,video_data_in_bin,6'd00};
+		outdataReg<=10'd255;
+	// 	
+	else if (cnt_v > 10'd200- 10'd5 && cnt_v <  10'd200 + 10'd5 && cnt_h >  10'd20- 10'd5 && (cnt_h < 10'd20 + 10'd5))
+		outdataReg<={8{empcon}};
+		
+	else if (cnt_v > 10'd200- 10'd5 && cnt_v <  10'd200 + 10'd5 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
+		outdataReg<={8{isst}};
+
+	else if (cnt_v > 10'd220- 10'd5 && cnt_v <  10'd220 + 10'd5 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+		outdataReg<={8{windpos[1]}};
+	else if (cnt_v > 10'd240- 10'd5 && cnt_v <  10'd240 + 10'd5 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+		outdataReg<={8{windpos[3]}};
+	else if (cnt_v > 10'd240- 10'd5 && cnt_v <  10'd240 + 10'd5 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
+		outdataReg<={8{windpos[2]}};
+	else if (cnt_v > 10'd240- 10'd5 && cnt_v <  10'd240 + 10'd5 && cnt_h >  10'd70- 10'd5 && (cnt_h < 10'd70 + 10'd5))
+		outdataReg<={8{windpos[0]}};		
+
+	else if (cnt_v > 10'd260- 10'd5 && cnt_v <  10'd260 + 10'd5 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+		outdataReg<={8{npos[1]}};
+	else if (cnt_v > 10'd275- 10'd5 && cnt_v <  10'd275 + 10'd5 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+		outdataReg<={8{npos[3]}};
+	else if (cnt_v > 10'd275 - 10'd5 && cnt_v <  10'd275  + 10'd5 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
+		outdataReg<={8{npos[2]}};
+	else if (cnt_v > 10'd275 - 10'd5 && cnt_v <  10'd275  + 10'd5 && cnt_h >  10'd70- 10'd5 && (cnt_h < 10'd70 + 10'd5))
+		outdataReg<={8{npos[0]}};	
+		
+	else 
+		outdataReg<={1'b0,video_data_in_bin,6'd00};
 end
 	
 assign video_data_ready = video_data_valid;
