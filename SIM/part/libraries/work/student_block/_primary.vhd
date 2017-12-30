@@ -6,8 +6,12 @@ entity student_block is
         centerH         : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi1, Hi1, Hi1, Hi1);
         windowSize      : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi1, Hi1, Hi1, Hi1, Hi1);
         fifoSize        : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi1, Hi0, Hi0, Hi0, Hi0);
+        lastPixH        : vl_logic_vector(0 to 9) := (Hi1, Hi0, Hi1, Hi0, Hi1, Hi1, Hi1, Hi1, Hi0, Hi1);
+        firstPixH       : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0);
+        lastPixV        : vl_logic_vector(0 to 9) := (Hi0, Hi1, Hi0, Hi0, Hi0, Hi1, Hi1, Hi1, Hi1, Hi1);
+        firstPixV       : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0);
         stepH           : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi1, Hi0, Hi0, Hi0);
-        stepV           : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi1, Hi0, Hi0, Hi0)
+        stepV           : vl_logic_vector(0 to 9) := (Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi0, Hi1, Hi0, Hi0)
     );
     port(
         clk             : in     vl_logic;
@@ -26,6 +30,10 @@ entity student_block is
     attribute mti_svvh_generic_type of centerH : constant is 1;
     attribute mti_svvh_generic_type of windowSize : constant is 1;
     attribute mti_svvh_generic_type of fifoSize : constant is 1;
+    attribute mti_svvh_generic_type of lastPixH : constant is 1;
+    attribute mti_svvh_generic_type of firstPixH : constant is 1;
+    attribute mti_svvh_generic_type of lastPixV : constant is 1;
+    attribute mti_svvh_generic_type of firstPixV : constant is 1;
     attribute mti_svvh_generic_type of stepH : constant is 1;
     attribute mti_svvh_generic_type of stepV : constant is 1;
 end student_block;
