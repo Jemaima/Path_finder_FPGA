@@ -277,7 +277,7 @@ wire [9:0] left_c;
 wire [9:0] upper_c;
 wire [9:0] right_c;
 wire [3:0] next_possible_dirs_2;
-
+wire [4:0] sum_right;
 find_geometric_centers find_geometric_centers_inst(
 .clk(clk),
 .video_frame_valid(video_frame_valid),
@@ -292,7 +292,8 @@ find_geometric_centers find_geometric_centers_inst(
 .left_center(left_c),
 .upper_center(upper_c),
 .right_center(right_c),
-.states(next_possible_dirs_2)
+.states(next_possible_dirs_2),
+.sum_right_w(sum_right)
 );
 
 reg [9:0] bottom_c_z = 5'd0;
@@ -310,13 +311,17 @@ reg nextShot =1'b0;
 
 reg [3:0] npos = 4'd0;
 reg [3:0] windpos = 4'd0;
+reg nearNodePose = 1'b0;
 
 always @(posedge clk)
 // set as Start if maze Parameters not Defined
 begin 
 	// only one frame per shot
 	if (!video_frame_valid)
+	begin
 		nextShot<=1'b0;
+		nearNodePose<=1'b0;
+	end
 	
 	// reset initial parameters if maze Parameters not Defined
 	if (!mazeParametersDefined  && cnt_v == lastPixV && cnt_h == firstPixH )
@@ -332,26 +337,37 @@ begin
 	else if (mazeParametersDefined)
 		if(cnt_v == lastPixV && cnt_h == firstPixH )// && cnt_frame != 10'd0)
 		begin
+		if (!nearNodePose)
 			case (curPose[23:20])
 				4'b1000:curPose[19:0] 	<= {curPose[19:10] - centerH	+ bottom_c_z, curPose[9:0] + stepV};   // down
 				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0] - centerV + left_c_z};		// left
 				4'b0010:curPose[19:0] 	<= {curPose[19:10] - centerH	+ upper_c_z, curPose[9:0] - stepV};		// up
 				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0] - centerV + right_c_z};		// right
 			endcase
+		else
+			case (curPose[23:20])
+				4'b1000:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] + stepV};   // down
+				4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0]};		// left
+				4'b0010:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] - stepV};		// up
+				4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0]};		// right
+			endcase
+			
 		end	
 		else if (onLastPose && !nextShot )
 		begin
-			bottom_c_z	<= centerH; // bottom_c +1'b1;
-			left_c_z		<= centerV; // left_c +1'b1;
-			upper_c_z	<= centerH; // upper_c +1'b1;
-			right_c_z	<= centerV; // right_c +1'b1;
+			bottom_c_z	<= bottom_c + 1'b1;
+			left_c_z		<=  left_c + 1'b1; //centerV; 
+			upper_c_z	<=  upper_c + 1'b1; //centerH; 
+			right_c_z	<= right_c + 1'b1; //centerV; 
 			empcon <= emptyConers;
 			isst <= !isStreight;
 			
 			npos <= ~{curPose[21:20],curPose[23:22]};
-			windpos <= next_possible_dirs;	
+			windpos <= next_possible_dirs_2;	
 			if (emptyConers && !isStreight)
-				curPose[23:20]  <= next_possible_dirs & ~{curPose[21:20],curPose[23:22]}; // & (~{curPose[21:20],curPose[23:22]}); // & ~{curPose[21:20],curPose[23:22]};
+				curPose[23:20]  <= next_possible_dirs_2 & ~{curPose[21:20],curPose[23:22]}; // & (~{curPose[21:20],curPose[23:22]}); // & ~{curPose[21:20],curPose[23:22]};
+			else if (!emptyConers)
+				nearNodePose<=1'b1;
 			nextShot <= 1'b1;
 
 		end
@@ -391,7 +407,7 @@ begin
 		outdataReg<={isStreight,emptyConers,6'b111111};
 	else if (cnt_h==1'b0)
 		outdataReg<=cnt_frame;
-	else if (cnt_h==bottom_c_z)
+	else if (cnt_h==sum_right)
 		outdataReg<=8'd200;
 	
 	else if (cnt_v > curPose[9:0]- 10'd5 && cnt_v < curPose[9:0] + 10'd5 && cnt_h > curPose[19:10]- 10'd5 && (cnt_h < curPose[19:10] + 10'd5))
@@ -402,6 +418,9 @@ begin
 		
 	else if (cnt_v > 10'd200- 10'd5 && cnt_v <  10'd200 + 10'd5 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
 		outdataReg<={8{isst}};
+	else if (cnt_v > 10'd200- 10'd5 && cnt_v <  10'd200 + 10'd5 && cnt_h >  10'd40- 10'd5 && (cnt_h < 10'd40 + 10'd5))
+		outdataReg<={8{nearNodePose}};
+	
 
 	else if (cnt_v > 10'd220- 10'd2 && cnt_v <  10'd220 + 10'd2 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
 		outdataReg<={8{windpos[1]}};

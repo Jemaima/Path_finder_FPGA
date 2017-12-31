@@ -7,7 +7,7 @@ vdivider_16
 IUIU99@OXR<c11Z:gMXnOk0
 Vh;>db`IZA0MI[AW]9hU1S1
 Z1 dC:\Users\metel\QuartusProjects\v.1.0\SIM\part
-w1513753143
+w1514708252
 8../../MGF/DIVIDER/divider_16.v
 F../../MGF/DIVIDER/divider_16.v
 L0 39
@@ -18,7 +18,7 @@ Z3 o-work work -O0
 !i10b 1
 !s100 e^6LZDd;88<LEY[OY>20i0
 !s85 0
-!s108 1514625152.858000
+!s108 1514709480.385000
 !s107 ../../MGF/DIVIDER/divider_16.v|
 !s90 -reportprogress|300|../../MGF/DIVIDER/divider_16.v|-novopt|-work|work|
 !s101 -O0
@@ -37,7 +37,7 @@ R3
 !i10b 1
 !s100 8KODQ<L[]DJ7el:JhQg5P1
 !s85 0
-!s108 1514625152.693000
+!s108 1514709480.276000
 !s107 ../../MGF/FIFO/fifo_1kx16.v|
 !s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx16.v|-novopt|-work|work|
 !s101 -O0
@@ -61,10 +61,10 @@ R3
 !s90 -reportprogress|300|../../MGF/FIFO/fifo_1kx32.v|-novopt|-work|work|
 !s101 -O0
 vfind_geometric_centers
-I8^KMZlO[C:c2h?eG>Aaom3
-V2V=NPX1`HoYkjjEV5b4o40
+I2P>zCV1U2:S2lOP[X]fM?2
+VH<`COzN0nFSm>d9=LhBC?0
 R1
-w1514620900
+w1514709319
 8../../HDL/find_geometric_centers.v
 F../../HDL/find_geometric_centers.v
 L0 1
@@ -73,17 +73,17 @@ r1
 31
 R3
 !i10b 1
-!s100 2;fhD^Dm2J]QJ;`zngjN=2
+!s100 SGAzN_:9ORYda@<HZi]R;3
 !s85 0
-!s108 1514625153.094000
+!s108 1514709480.495000
 !s107 ../../HDL/find_geometric_centers.v|
 !s90 -reportprogress|300|../../HDL/find_geometric_centers.v|-novopt|-work|work|
 !s101 -O0
 vstudent_block
-Ihjfj_JGSBW`;^S:O[WE_c2
+I>WcWVFm9[hAWfe[;927En3
 VOK:^1MaBF2cCYPCmYJm462
 R1
-w1514625128
+w1514709473
 8../../HDL/student_block.v
 F../../HDL/student_block.v
 L0 2
@@ -92,9 +92,9 @@ r1
 31
 R3
 !i10b 1
-!s100 KeO>2TXn;Ac<KZ3Tl;3>e3
+!s100 OoR_D?W3M[?:hUXW]jb4c0
 !s85 0
-!s108 1514625153.285000
+!s108 1514709480.604000
 !s107 ../../HDL/student_block.v|
 !s90 -reportprogress|300|../../HDL/student_block.v|-novopt|-work|work|
 !s101 -O0
@@ -112,7 +112,7 @@ R2
 r1
 !s85 0
 31
-!s108 1514625153.521000
+!s108 1514709480.713000
 !s107 tb.v|
 !s90 -reportprogress|300|-novopt|-work|work|tb.v|
 !s101 -O0
