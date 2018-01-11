@@ -3,19 +3,19 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 1.237
-TNS   : 0.000
+Slack : -15.157
+TNS   : -760.222
 
 Type  : Slow 1200mV 85C Model Setup 'altera_reserved_tck'
-Slack : 45.185
+Slack : 43.375
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Setup 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 70.750
+Slack : 70.968
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 0.411
+Slack : 0.395
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'altera_reserved_tck'
@@ -23,19 +23,19 @@ Slack : 0.452
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.452
+Slack : 0.453
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 47.180
+Slack : 47.858
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Removal 'altera_reserved_tck'
-Slack : 1.581
+Slack : 1.139
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 4.349
+Slack : 4.332
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'IN_CLK'
@@ -47,23 +47,23 @@ Slack : 36.755
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.462
+Slack : 49.463
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 1.690
-TNS   : 0.000
+Slack : -12.868
+TNS   : -616.414
 
 Type  : Slow 1200mV 0C Model Setup 'altera_reserved_tck'
-Slack : 45.589
+Slack : 43.838
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 71.024
+Slack : 71.234
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 0.397
+Slack : 0.394
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'altera_reserved_tck'
@@ -75,15 +75,15 @@ Slack : 0.401
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 47.510
+Slack : 48.158
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Removal 'altera_reserved_tck'
-Slack : 1.420
+Slack : 1.043
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 4.346
+Slack : 4.300
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'IN_CLK'
@@ -95,23 +95,23 @@ Slack : 36.753
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 49.326
+Slack : 49.329
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 5.823
-TNS   : 0.000
+Slack : -1.208
+TNS   : -26.281
 
 Type  : Fast 1200mV 0C Model Setup 'altera_reserved_tck'
-Slack : 48.234
+Slack : 47.462
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 72.661
+Slack : 72.731
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'
-Slack : 0.140
+Slack : 0.137
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'altera_reserved_tck'
@@ -119,15 +119,15 @@ Slack : 0.186
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.187
+Slack : 0.186
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 49.053
+Slack : 49.390
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.658
+Slack : 0.500
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'sys_clk_inst|pll_40_mhz_inst|altpll_component|auto_generated|pll1|clk[3]'

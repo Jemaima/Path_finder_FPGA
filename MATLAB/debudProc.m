@@ -10,7 +10,7 @@ fclose(fileID2);
 dataFPGA = C{1,1};
 vsize = 576;
 hsize = 702;
-nShots = 9; 
+nShots =6; 
 procImageHF = double(zeros(nShots,vsize,hsize));
 outImage = testImageRawField;
 
