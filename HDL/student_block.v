@@ -36,8 +36,8 @@ parameter firstPixH = 10'd0;
 parameter lastPixV = 10'd287;			
 parameter firstPixV = 10'd0;	
 
-parameter stepH = 10'd8;
-parameter stepV = 10'd4;
+parameter stepH = 10'd10;
+parameter stepV = 10'd5;
 
 //=======================================================
 // initial scan windows generation
@@ -87,7 +87,7 @@ always @(posedge clk)
 begin
 if (!video_frame_valid)
 	begin
-	if (frameStart)
+	if (frameEnd)
 		begin
 		cnt_v <= 10'd1023;
 		cnt_h <= 10'd0;
@@ -99,20 +99,22 @@ else
 	if (frameStart) 
 		begin
 		cnt_frame <= cnt_frame + 10'd1;
-		cnt_v <= 10'd1023;
-		cnt_h <= 10'd0;
+//		cnt_v <= 10'd1023;
+//		cnt_h <= 10'd0;
 //		if (!mazeParametersDefined)
 //			cnt_frame<=10'd1023;
 		end
-	if (lineStart)
-		begin
-		cnt_v <= cnt_v + 10'd1;
-		cnt_h <= 10'd0;
-		end
-	if (video_data_valid)
-		begin
-		cnt_h <= cnt_h + 10'd1;
-		end
+//	if (lineStart)
+//		begin
+//		cnt_v <= cnt_v + 10'd1;
+//		cnt_h <= 10'd0;
+//		end
+	cnt_v<=video_address[19:11];
+	cnt_h<=video_address[9:0];
+//	if (video_data_valid)
+//		begin
+//		cnt_h <= cnt_h + 10'd1;
+//		end
 	end
 end
 
@@ -121,7 +123,7 @@ end
 //=======================================================
 
 wire video_data_in_bin;
-assign video_data_in_bin = (video_data_in>8'd150)?1'b1:1'b0;
+assign video_data_in_bin = (video_data_in>8'd50)?1'b1:1'b0;
 
 //=======================================================
 // detection edges to find first node
@@ -228,7 +230,7 @@ else if (video_data_valid)
 	if (!mazeParametersDefined)
 	begin
 		 // define start Pose
-		if (cnt_v == 10'd18)
+		if (cnt_v == 10'd14)
 		begin
 			path_width 	<= path_width + video_data_in_bin;
 			stLeft 		<= posEdgeMaze ? cnt_h:stLeft;
@@ -236,9 +238,9 @@ else if (video_data_valid)
 		end
 		
 		// set start pose at random line
-		else if (cnt_v == 10'd29 && cnt_h==firstPixH) // write startPose
+		else if (cnt_v == 10'd15 && cnt_h==firstPixH) // write startPose
 		begin
-			startPose[9:0]		<= 10'd55;
+			startPose[9:0]		<= 10'd16;
 			startPose[19:10]	<= stLeft[9:1] + stRight[9:1] + 10'd1;
 			stLeft  <= 10'd0;
 			stRight <= 10'd0;
@@ -308,6 +310,9 @@ reg [3:0] allExceptBackDir_z = 4'd0;
 reg [3:0] possibleDirs_z = 4'd0;
 reg nearNodePose = 1'b0;
 
+//wire dirSum =2'd0;
+//assign dirSum = next_possible_dirs_2[3]+next_possible_dirs_2[2]+next_possible_dirs_2[1]+next_possible_dirs_2[0];
+
 always @(posedge clk)
 // set as Start if maze Parameters not Defined
 begin 
@@ -327,7 +332,7 @@ begin
 		end
 		
 		// processinf after whole frame scanning
-		else if (frameEnd)
+		else if (frameEnd & cnt_frame[3:0]==4'd15)
 		begin
 			if (!nearNodePose)
 				case (curPose[23:20])
@@ -338,10 +343,10 @@ begin
 				endcase
 			else
 				case (curPose[23:20])
-					4'b1000:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] + stepV + stepV};   	// down
-					4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH- stepH, curPose[9:0]};		// left
-					4'b0010:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] - stepV - stepV};		// up
-					4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH+ stepH, curPose[9:0]};		// right
+					4'b1000:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] + stepV};   	// down
+					4'b0100:curPose[19:0] 	<= {curPose[19:10] - stepH, curPose[9:0]};		// left
+					4'b0010:curPose[19:0] 	<= {curPose[19:10], curPose[9:0] - stepV};		// up
+					4'b0001:curPose[19:0] 	<= {curPose[19:10] + stepH, curPose[9:0]};		// right
 				endcase
 			end
 		
@@ -356,11 +361,12 @@ begin
 		isStreight_z <= !isStreight;
 		
 		allExceptBackDir_z <= ~{curPose[21:20],curPose[23:22]};
-		possibleDirs_z <= next_possible_dirs_2 & next_possible_dirs;
-		if (next_possible_dirs_2)
-		if (emptyConers && !isStreight)
+		possibleDirs_z <=next_possible_dirs_2; // next_possible_dirs_2 & 
+		//if (next_possible_dirs_2)
+		
+		if (emptyConers && !isStreight  & cnt_frame[3:0]==4'd15)
 			//curPose[23:20]  <=curPose[23:20];
-			curPose[23:20]  <= next_possible_dirs_2 & ~{curPose[21:20],curPose[23:22]} & next_possible_dirs;
+			curPose[23:20]  <=  ~{curPose[21:20],curPose[23:22]} & next_possible_dirs_2; //next_possible_dirs_2 &
 		else if (!emptyConers)
 			nearNodePose<=1'b1;
 		nextShot <= 1'b1;

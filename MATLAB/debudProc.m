@@ -14,7 +14,7 @@ nShots =6;
 procImageHF = double(zeros(nShots,vsize,hsize));
 outImage = testImageRawField;
 
-for z = 1:nShots
+for z = 5:nShots
     for i = 1:vsize
         for j = 1:hsize
             procImageHF(z,i,j) = squeeze(dataFPGA((i-1)*hsize+j+(z-1)*hsize*vsize));
