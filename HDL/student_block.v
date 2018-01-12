@@ -247,6 +247,15 @@ else if (video_data_valid)
 		end	
 	end
 	
+	else if (curPose[9:0]>10'd270)
+		begin
+		//mazeParametersDefined <= 1'b0;
+		//path_width<=1'b0;
+		//path_width_bottom<=1'b0;
+		mazeComplete<=1'b1;
+		end
+		
+		
 	// if parameters defined, but smth changed
 	else if (onLastPose && !window[centerH][centerV])
 		begin
@@ -254,6 +263,7 @@ else if (video_data_valid)
 		path_width<=1'b0;
 		path_width_bottom<=1'b0;
 		end
+
 	
 //=======================================================
 // Define next position
@@ -299,9 +309,6 @@ reg nextShot =1'b0;
 reg [3:0] allExceptBackDir_z = 4'd0;
 reg [3:0] possibleDirs_z = 4'd0;
 reg nearNodePose = 1'b0;
-
-wire dirSum;
-assign dirSum = next_possible_dirs_2[3]+ next_possible_dirs_2[2]+next_possible_dirs_2[1]+next_possible_dirs_2[0];
 
 always @(posedge clk)
 // set as Start if maze Parameters not Defined
@@ -401,6 +408,39 @@ if (!mazeParametersDefined)
 
 else
 begin
+
+	if (mazeComplete)
+	//W
+	if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd150 && cnt_h < 10'd175)
+		outdataReg<=8'd255;
+	else if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd200 && cnt_h < 10'd225)
+		outdataReg<=8'd255;
+	else if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd250 && cnt_h < 10'd275)
+		outdataReg<=8'd255;
+	else if (cnt_v > 10'd175 && cnt_v < 10'd200 && cnt_h > 10'd175 && cnt_h < 10'd200)
+		outdataReg<=8'd255;
+	else if (cnt_v > 10'd175 && cnt_v < 10'd200 && cnt_h > 10'd225 && cnt_h < 10'd250)
+		outdataReg<=8'd255;
+	//I
+	else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd325 && cnt_h < 10'd350)
+		outdataReg<=8'd255;
+	//N
+	
+	else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd400 && cnt_h < 10'd425)
+		outdataReg<=8'd255;
+	else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd475 && cnt_h < 10'd500)
+		outdataReg<=8'd255;
+		
+	else if (cnt_v > 10'd125 && cnt_v < 10'd150 && cnt_h > 10'd425 && cnt_h < 10'd450)
+		outdataReg<=8'd255;
+	else if (cnt_v > 10'd150 && cnt_v < 10'd175 && cnt_h > 10'd450 && cnt_h < 10'd475)
+		outdataReg<=8'd255;
+	
+	else 
+		outdataReg<={2'b0,video_data_in_bin,5'd0};
+
+	else
+	
 	if (onLastPose)
 		outdataReg<={isStreight,emptyConers,6'b111111};
 // check if frame cnt works
@@ -445,6 +485,7 @@ begin
 	else 
 		//outdataReg<={1'b0,video_data_in_bin,cnt_frame[4:9]};
 		outdataReg<={1'b0,video_data_in_bin,6'd0};
+
 end
 	
 assign video_data_ready = video_data_valid;
