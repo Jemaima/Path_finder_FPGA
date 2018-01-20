@@ -10,11 +10,11 @@ fclose(fileID2);
 dataFPGA = C{1,1};
 vsize = 576;
 hsize = 702;
-nShots =6; 
+nShots =1; 
 procImageHF = double(zeros(nShots,vsize,hsize));
 outImage = testImageRawField;
 
-for z = 5:nShots
+for z = 1:nShots
     for i = 1:vsize
         for j = 1:hsize
             procImageHF(z,i,j) = squeeze(dataFPGA((i-1)*hsize+j+(z-1)*hsize*vsize));
@@ -23,4 +23,4 @@ for z = 5:nShots
     outImage = horzcat(outImage,squeeze(procImageHF(z,:,:)));
 end
 
-figure, imshow(outImage(:,hsize+1:end), [0 255]);  
+figure, imshow(outImage(1:287,hsize+1:end), [0 255]);  

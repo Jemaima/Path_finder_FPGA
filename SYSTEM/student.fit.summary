@@ -1,14 +1,14 @@
-Fitter Status : Successful - Fri Jan 12 17:27:03 2018
+Fitter Status : Successful - Thu Jan 18 13:58:43 2018
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : student
 Top-level Entity Name : student_top
 Family : Cyclone III
 Device : EP3C10E144C8
 Timing Models : Final
-Total logic elements : 1,950 / 10,320 ( 19 % )
-    Total combinational functions : 1,842 / 10,320 ( 18 % )
-    Dedicated logic registers : 664 / 10,320 ( 6 % )
-Total registers : 664
+Total logic elements : 1,919 / 10,320 ( 19 % )
+    Total combinational functions : 1,808 / 10,320 ( 18 % )
+    Dedicated logic registers : 650 / 10,320 ( 6 % )
+Total registers : 650
 Total pins : 25 / 95 ( 26 % )
 Total virtual pins : 0
 Total memory bits : 15,360 / 423,936 ( 4 % )

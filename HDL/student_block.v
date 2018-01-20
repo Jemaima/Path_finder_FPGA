@@ -19,6 +19,7 @@ module student_block(
 
 reg mazeParametersDefined = 1'b0;		/// вход в лабиринт 
 reg mazeComplete = 1'b0;		/// вход в лабиринт 
+reg mazeDeadEnd = 1'b0;
 
 reg [4:0] path_width = 5'd0;				/// ширина пути
 reg [4:0] path_width_bottom = 5'd0;
@@ -83,6 +84,7 @@ assign frameEnd 	= video_frame_valid_z 	& ~video_frame_valid;
 reg [9:0] cnt_h = 10'd0;
 reg [9:0] cnt_v = 10'd1023;
 reg [9:0] cnt_frame = 10'd1023;
+reg [7:0] cnt_restart = 8'd0;
 
 
 always @(posedge clk)
@@ -93,6 +95,10 @@ if (!video_frame_valid)
 		begin
 		cnt_v <= 10'd1023;
 		cnt_h <= 10'd0;
+			if (mazeComplete)
+				cnt_restart <= cnt_restart +1'b1;
+			else 
+				cnt_restart <= 8'd0;
 		end
 	end
 	
@@ -189,7 +195,7 @@ assign emptyConers =(!window[0][0] & !window[windowSize-1][0] & !window[0][fifoS
 assign isStreight = (window[0][centerV] & window[windowSize-1][centerV] & !window[centerH][0] & !window[centerH][fifoSize-1])
 					   ||(!window[0][centerV] & !window[windowSize-1][centerV] & window[centerH][0] & window[centerH][fifoSize-1]) & mazeParametersDefined;
 	
-assign next_possible_dirs  = {window[centerH][0], window[windowSize-1][centerV], window[centerH][fifoSize-1-3], window[0][centerV]};//  & ~{curPose[21:20],curPose[23:22]}; // & (~{curPose[21:20],curPose[23:22]});
+assign next_possible_dirs  = {window[centerH][0], window[windowSize-1][centerV], window[centerH][fifoSize-1], window[0][centerV]};//  & ~{curPose[21:20],curPose[23:22]}; // & (~{curPose[21:20],curPose[23:22]});
 
 //=======================================================
 // Define maze Parameters
@@ -205,9 +211,17 @@ if (!video_frame_valid)
 		begin
 		//path_width = 5'd0;
 		//path_width_bottom = 5'd0;
-		if (frameEnd && ((startPose[19:10]-endPose[19:10])<10'd30 || (endPose[19:10]-startPose[19:10])<10'd30)) /// если конец строки и последняя строка
+		if (frameEnd && ((startPose[19:10]-endPose[19:10])<10'd20 || (endPose[19:10]-startPose[19:10])<10'd20)) /// если конец строки и последняя строка
 				mazeParametersDefined <= 1'b1;  // maze defenition complete
 		end
+	
+	else if ((mazeComplete || mazeDeadEnd) & cnt_restart==8'd250)
+		begin 
+			mazeComplete <=1'b0;
+			mazeDeadEnd <= 1'b0;
+			mazeParametersDefined<=1'b0;
+		end;
+		
 	stLeft 	= 10'd0;
 	stRight = 10'd0;
 	end
@@ -246,15 +260,11 @@ else if (video_data_valid)
 			endPose[19:10]	<= stLeft[9:1] + stRight[9:1] + 10'd1;
 		end	
 	end
-	
+	//mazeParametersDefined
 	else if (curPose[9:0]>10'd270)
 		begin
-		//mazeParametersDefined <= 1'b0;
-		//path_width<=1'b0;
-		//path_width_bottom<=1'b0;
 		mazeComplete<=1'b1;
 		end
-		
 		
 	// if parameters defined, but smth changed
 	else if (onLastPose && !window[centerH][centerV])
@@ -263,7 +273,10 @@ else if (video_data_valid)
 		path_width<=1'b0;
 		path_width_bottom<=1'b0;
 		end
-
+	else if (onLastPose & next_possible_dirs == 4'b0000)
+		begin
+		mazeDeadEnd <= 1'b0;
+		end
 	
 //=======================================================
 // Define next position
@@ -392,7 +405,7 @@ if (!mazeParametersDefined)
 	if (cnt_h==1'b0 || cnt_h==lastPixH  )
 		outdataReg<=8'd250;
 //	else if (cnt_v==1'b0 || cnt_v==lastPixV )
-//		outdataReg<=8'd250;	
+//z		outdataReg<=8'd250;	
 //// draw Pose and end Pose
 //	else if (cnt_h==startPose[19:10] || cnt_v==startPose[9:0])
 //		outdataReg<=8'd150;
@@ -410,81 +423,77 @@ else
 begin
 
 	if (mazeComplete)
-	//W
-	if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd150 && cnt_h < 10'd175)
-		outdataReg<=8'd255;
-	else if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd200 && cnt_h < 10'd225)
-		outdataReg<=8'd255;
-	else if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd250 && cnt_h < 10'd275)
-		outdataReg<=8'd255;
-	else if (cnt_v > 10'd175 && cnt_v < 10'd200 && cnt_h > 10'd175 && cnt_h < 10'd200)
-		outdataReg<=8'd255;
-	else if (cnt_v > 10'd175 && cnt_v < 10'd200 && cnt_h > 10'd225 && cnt_h < 10'd250)
-		outdataReg<=8'd255;
-	//I
-	else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd325 && cnt_h < 10'd350)
-		outdataReg<=8'd255;
-	//N
-	
-	else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd400 && cnt_h < 10'd425)
-		outdataReg<=8'd255;
-	else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd475 && cnt_h < 10'd500)
-		outdataReg<=8'd255;
+		//W
+		if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd150 && cnt_h < 10'd175)
+			outdataReg<=8'd255;
+		else if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd200 && cnt_h < 10'd225)
+			outdataReg<=8'd255;
+		else if (cnt_v > 10'd100 && cnt_v < 10'd175 && cnt_h > 10'd250 && cnt_h < 10'd275)
+			outdataReg<=8'd255;
+		else if (cnt_v > 10'd175 && cnt_v < 10'd200 && cnt_h > 10'd175 && cnt_h < 10'd200)
+			outdataReg<=8'd255;
+		else if (cnt_v > 10'd175 && cnt_v < 10'd200 && cnt_h > 10'd225 && cnt_h < 10'd250)
+			outdataReg<=8'd255;
+		//I
+		else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd325 && cnt_h < 10'd350)
+			outdataReg<=8'd255;
+		//N
 		
-	else if (cnt_v > 10'd125 && cnt_v < 10'd150 && cnt_h > 10'd425 && cnt_h < 10'd450)
-		outdataReg<=8'd255;
-	else if (cnt_v > 10'd150 && cnt_v < 10'd175 && cnt_h > 10'd450 && cnt_h < 10'd475)
-		outdataReg<=8'd255;
-	
-	else 
-		outdataReg<={2'b0,video_data_in_bin,5'd0};
-
+		else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd400 && cnt_h < 10'd425)
+			outdataReg<=8'd255;
+		else if (cnt_v > 10'd100 && cnt_v < 10'd200 && cnt_h > 10'd475 && cnt_h < 10'd500)
+			outdataReg<=8'd255;
+			
+		else if (cnt_v > 10'd125 && cnt_v < 10'd150 && cnt_h > 10'd425 && cnt_h < 10'd450)
+			outdataReg<=8'd255;
+		else if (cnt_v > 10'd150 && cnt_v < 10'd175 && cnt_h > 10'd450 && cnt_h < 10'd475)
+			outdataReg<=8'd255;
+		else 
+			outdataReg<={2'b0,video_data_in_bin,5'd0};
 	else
 	
-	if (onLastPose)
-		outdataReg<={isStreight,emptyConers,6'b111111};
-// check if frame cnt works
-	else if (cnt_v > 10'd5 && cnt_v < 10'd25 && cnt_h > 10'd5 && (cnt_h < 10'd25))
-		outdataReg<=cnt_frame;
-		
-	else if (cnt_v > curPose[9:0]- 10'd3 && cnt_v < curPose[9:0] + 10'd3 && cnt_h > curPose[19:10]- 10'd5 && (cnt_h < curPose[19:10] + 10'd5))
-		outdataReg<=10'd255;
+		if (onLastPose)
+			outdataReg<={isStreight,emptyConers,6'b111111};
+	// check if frame cnt works
+//		else if (cnt_v > 10'd5 && cnt_v < 10'd25 && cnt_h > 10'd5 && (cnt_h < 10'd25))
+//			outdataReg<=cnt_frame;
+			
+		else if (cnt_v > curPose[9:0]- 10'd3 && cnt_v < curPose[9:0] + 10'd3 && cnt_h > curPose[19:10]- 10'd5 && (cnt_h < curPose[19:10] + 10'd5))
+			outdataReg<=10'd255;
 
-	else if (cnt_h==curPose[19:10] || cnt_v==curPose[9:0])
-		outdataReg<=8'd150;
-		
-		
-	else if (cnt_v > 10'd200- 10'd5 && cnt_v <  10'd200 + 10'd5 && cnt_h >  10'd20- 10'd5 && (cnt_h < 10'd20 + 10'd5))
-		outdataReg<={8{emptyConers_z}};
-	else if (cnt_v > 10'd200- 10'd5 && cnt_v <  10'd200 + 10'd5 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
-		outdataReg<={8{isStreight_z}};
-	else if (cnt_v > 10'd200- 10'd5 && cnt_v <  10'd200 + 10'd5 && cnt_h >  10'd40- 10'd5 && (cnt_h < 10'd40 + 10'd5))
-		outdataReg<={8{nearNodePose}};
+		else if (cnt_h==curPose[19:10] || cnt_v==curPose[9:0])
+			outdataReg<=8'd150;
+			
+		else if (cnt_v > 10'd200- 10'd3 && cnt_v <  10'd200 + 10'd3 && cnt_h >  10'd20- 10'd5 && (cnt_h < 10'd20 + 10'd5))
+			outdataReg<={8{emptyConers_z}};
+		else if (cnt_v > 10'd200- 10'd3 && cnt_v <  10'd200 + 10'd3 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
+			outdataReg<={8{isStreight_z}};
+		else if (cnt_v > 10'd200- 10'd3 && cnt_v <  10'd200 + 10'd3 && cnt_h >  10'd40- 10'd5 && (cnt_h < 10'd40 + 10'd5))
+			outdataReg<={8{nearNodePose}};
 
-		
-// possible current dirs
-	else if (cnt_v > 10'd220- 10'd2 && cnt_v <  10'd220 + 10'd2 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
-		outdataReg<={8{possibleDirs_z[1]}};
-	else if (cnt_v > 10'd230- 10'd2 && cnt_v <  10'd230 + 10'd2 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
-		outdataReg<={8{possibleDirs_z[3]}};
-	else if (cnt_v > 10'd230- 10'd2 && cnt_v <  10'd230 + 10'd2 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
-		outdataReg<={8{possibleDirs_z[2]}};
-	else if (cnt_v > 10'd230- 10'd2 && cnt_v <  10'd230 + 10'd2 && cnt_h >  10'd70- 10'd5 && (cnt_h < 10'd70 + 10'd5))
-		outdataReg<={8{possibleDirs_z[0]}};		
+	// possible current dirs
+		else if (cnt_v > 10'd220- 10'd3 && cnt_v <  10'd220 + 10'd3 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+			outdataReg<={8{possibleDirs_z[1]}};
+		else if (cnt_v > 10'd230- 10'd3 && cnt_v <  10'd230 + 10'd3 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+			outdataReg<={8{possibleDirs_z[3]}};
+		else if (cnt_v > 10'd230- 10'd3 && cnt_v <  10'd230 + 10'd3 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
+			outdataReg<={8{possibleDirs_z[2]}};
+		else if (cnt_v > 10'd230- 10'd3 && cnt_v <  10'd230 + 10'd3 && cnt_h >  10'd70- 10'd5 && (cnt_h < 10'd70 + 10'd5))
+			outdataReg<={8{possibleDirs_z[0]}};		
 
-// alowed current dis (all excrpt back step)
-	else if (cnt_v > 10'd250- 10'd2 && cnt_v <  10'd250 + 10'd2 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
-		outdataReg<={8{allExceptBackDir_z[1]}};
-	else if (cnt_v > 10'd260- 10'd2 && cnt_v <  10'd260 + 10'd2 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
-		outdataReg<={8{allExceptBackDir_z[3]}};
-	else if (cnt_v > 10'd260 - 10'd2 && cnt_v <  10'd260  + 10'd2 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
-		outdataReg<={8{allExceptBackDir_z[2]}};
-	else if (cnt_v > 10'd260 - 10'd2 && cnt_v <  10'd260  + 10'd2 && cnt_h >  10'd70- 10'd5 && (cnt_h < 10'd70 + 10'd5))
-		outdataReg<={8{allExceptBackDir_z[0]}};	
-		
-	else 
-		//outdataReg<={1'b0,video_data_in_bin,cnt_frame[4:9]};
-		outdataReg<={1'b0,video_data_in_bin,6'd0};
+	// alowed current dis (all excrpt back step)
+		else if (cnt_v > 10'd250- 10'd3 && cnt_v <  10'd250 + 10'd3 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+			outdataReg<={8{allExceptBackDir_z[1]}};
+		else if (cnt_v > 10'd260- 10'd3 && cnt_v <  10'd260 + 10'd3 && cnt_h >  10'd50- 10'd5 && (cnt_h < 10'd50 + 10'd5))
+			outdataReg<={8{allExceptBackDir_z[3]}};
+		else if (cnt_v > 10'd260 - 10'd3 && cnt_v <  10'd260  + 10'd3 && cnt_h >  10'd30- 10'd5 && (cnt_h < 10'd30 + 10'd5))
+			outdataReg<={8{allExceptBackDir_z[2]}};
+		else if (cnt_v > 10'd260 - 10'd3 && cnt_v <  10'd260  + 10'd3 && cnt_h >  10'd70- 10'd5 && (cnt_h < 10'd70 + 10'd5))
+			outdataReg<={8{allExceptBackDir_z[0]}};	
+			
+		else 
+			//outdataReg<={1'b0,video_data_in_bin,cnt_frame[4:9]};
+			outdataReg<={1'b0,video_data_in_bin,6'd0};
 
 end
 	
