@@ -1,0 +1,26 @@
+module find_geometric_centers(
+	input clk,,
+	input mazeParametersDefined,
+	input [16:0] window [32:0],   // не нужно
+	output[5:0] botton_center,
+	output[5:0] left_center,
+	output[5:0] upper_center,
+	output[5:0] right_center
+	);
+
+parameter center = 16;
+reg [20:0] next_p = 20'd0;
+always @(posedge clk)
+if(onRightPose)
+	case (dir)
+	4'b1000: next_p <= window[center][center - path_width]?(cur_state + {10'd0,path_width}):{20{1'b0}};
+	4'b0100: next_p <= window[center - path_width][center]?(cur_state - {path_width, 10'd0,}):{20{1'b0}};
+	4'b0010: next_p <= window[center][center + path_width]?(cur_state - {10'd0,path_width}):{20{1'b0}};
+	4'b0001: next_p <= window[center + path_width][center]?(cur_state + {path_width, 10'd0,}):{20{1'b0}};
+	endcase
+else
+	next_state <= cur_state;
+
+assign next_state = next_p;
+
+endmodule
