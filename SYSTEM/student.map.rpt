@@ -1,5 +1,5 @@
 Analysis & Synthesis report for student
-Thu Jan 18 13:58:26 2018
+Tue Apr 03 17:11:13 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -68,7 +68,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jan 18 13:58:26 2018      ;
+; Analysis & Synthesis Status        ; Successful - Tue Apr 03 17:11:13 2018      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; student                                    ;
 ; Top-level Entity Name              ; student_top                                ;
@@ -190,57 +190,57 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                            ; Library ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
-; ../MGF/FIFO/fifo_1kx16.v         ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/FIFO/fifo_1kx16.v              ;         ;
-; ../HDL/student_top.v             ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/student_top.v                  ;         ;
-; ../HDL/parameter_ctrl.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/parameter_ctrl.v               ;         ;
-; ../HDL/system_clock.v            ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/system_clock.v                 ;         ;
-; ../HDL/reset_generator.v         ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/reset_generator.v              ;         ;
-; ../HDL/adc_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/adc_controller.v               ;         ;
-; ../HDL/student_block.v           ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/student_block.v                ;         ;
-; ../HDL/dac_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/dac_controller.v               ;         ;
-; ../MGF/PLL/pll_40_mhz.v          ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/PLL/pll_40_mhz.v               ;         ;
-; ../MGF/ALTCLKCTRL/global_buf.v   ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v        ;         ;
-; ../MGF/SOURCE/source.v           ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/SOURCE/source.v                ;         ;
-; ../MGF/DIVIDER/divider_16.v      ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v           ;         ;
-; ../HDL/find_geometric_centers.v  ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/v.1.0/HDL/find_geometric_centers.v       ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altpll.tdf               ;         ;
-; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc           ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_pll.inc          ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/stratixii_pll.inc        ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/cycloneii_pll.inc        ;         ;
-; db/pll_40_mhz_altpll.v           ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/pll_40_mhz_altpll.v      ;         ;
-; scfifo.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/scfifo.tdf               ;         ;
-; a_regfifo.inc                    ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_regfifo.inc            ;         ;
-; a_dpfifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_dpfifo.inc             ;         ;
-; a_i2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_i2fifo.inc             ;         ;
-; a_fffifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_fffifo.inc             ;         ;
-; a_f2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_f2fifo.inc             ;         ;
-; db/scfifo_t171.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/scfifo_t171.tdf          ;         ;
-; db/a_dpfifo_gp61.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/a_dpfifo_gp61.tdf        ;         ;
-; db/altsyncram_52g1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/altsyncram_52g1.tdf      ;         ;
-; db/cmpr_ls8.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cmpr_ls8.tdf             ;         ;
-; db/cntr_p8b.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_p8b.tdf             ;         ;
-; db/cntr_da7.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_da7.tdf             ;         ;
-; db/cntr_1ab.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/cntr_1ab.tdf             ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf           ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc          ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc      ;         ;
-; db/lpm_divide_69u.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/lpm_divide_69u.tdf       ;         ;
-; db/sign_div_unsign_mlh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/sign_div_unsign_mlh.tdf  ;         ;
-; db/alt_u_div_m5f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/alt_u_div_m5f.tdf        ;         ;
-; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/add_sub_unc.tdf          ;         ;
-; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/db/add_sub_vnc.tdf          ;         ;
-; altsource_probe.v                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe.v        ;         ;
-; altsource_probe_body.vhd         ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe_body.vhd ;         ;
-; sld_rom_sr.vhd                   ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_rom_sr.vhd           ;         ;
-; sld_hub.vhd                      ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_hub.vhd              ;         ;
-; sld_jtag_hub.vhd                 ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd         ;         ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                          ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                      ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------+---------+
+; ../MGF/FIFO/fifo_1kx16.v         ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/FIFO/fifo_1kx16.v             ;         ;
+; ../HDL/student_top.v             ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/student_top.v                 ;         ;
+; ../HDL/parameter_ctrl.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/parameter_ctrl.v              ;         ;
+; ../HDL/system_clock.v            ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/system_clock.v                ;         ;
+; ../HDL/reset_generator.v         ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/reset_generator.v             ;         ;
+; ../HDL/adc_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/adc_controller.v              ;         ;
+; ../HDL/student_block.v           ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/student_block.v               ;         ;
+; ../HDL/dac_controller.v          ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/dac_controller.v              ;         ;
+; ../MGF/PLL/pll_40_mhz.v          ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/PLL/pll_40_mhz.v              ;         ;
+; ../MGF/ALTCLKCTRL/global_buf.v   ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/ALTCLKCTRL/global_buf.v       ;         ;
+; ../MGF/SOURCE/source.v           ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/SOURCE/source.v               ;         ;
+; ../MGF/DIVIDER/divider_16.v      ; yes             ; User Wizard-Generated File   ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/DIVIDER/divider_16.v          ;         ;
+; ../HDL/find_geometric_centers.v  ; yes             ; User Verilog HDL File        ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/HDL/find_geometric_centers.v      ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altpll.tdf                         ;         ;
+; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc                     ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_pll.inc                    ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/stratixii_pll.inc                  ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/cycloneii_pll.inc                  ;         ;
+; db/pll_40_mhz_altpll.v           ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/pll_40_mhz_altpll.v     ;         ;
+; scfifo.tdf                       ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/scfifo.tdf                         ;         ;
+; a_regfifo.inc                    ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_regfifo.inc                      ;         ;
+; a_dpfifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_dpfifo.inc                       ;         ;
+; a_i2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_i2fifo.inc                       ;         ;
+; a_fffifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_fffifo.inc                       ;         ;
+; a_f2fifo.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/a_f2fifo.inc                       ;         ;
+; db/scfifo_t171.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/scfifo_t171.tdf         ;         ;
+; db/a_dpfifo_gp61.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/a_dpfifo_gp61.tdf       ;         ;
+; db/altsyncram_52g1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/altsyncram_52g1.tdf     ;         ;
+; db/cmpr_ls8.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/cmpr_ls8.tdf            ;         ;
+; db/cntr_p8b.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/cntr_p8b.tdf            ;         ;
+; db/cntr_da7.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/cntr_da7.tdf            ;         ;
+; db/cntr_1ab.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/cntr_1ab.tdf            ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf                     ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc                    ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc                ;         ;
+; db/lpm_divide_69u.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/lpm_divide_69u.tdf      ;         ;
+; db/sign_div_unsign_mlh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/sign_div_unsign_mlh.tdf ;         ;
+; db/alt_u_div_m5f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/alt_u_div_m5f.tdf       ;         ;
+; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/add_sub_unc.tdf         ;         ;
+; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/db/add_sub_vnc.tdf         ;         ;
+; altsource_probe.v                ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe.v                  ;         ;
+; altsource_probe_body.vhd         ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altsource_probe_body.vhd           ;         ;
+; sld_rom_sr.vhd                   ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_rom_sr.vhd                     ;         ;
+; sld_hub.vhd                      ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_hub.vhd                        ;         ;
+; sld_jtag_hub.vhd                 ; yes             ; Encrypted Megafunction       ; c:/altera/13.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd                   ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------+---------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -347,21 +347,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                                                                            ;
-+--------+------------------------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-; Vendor ; IP Core Name                 ; Version ; Release Date ; License Type ; Entity Instance                                                                                                               ; IP Include File                                                  ;
-+--------+------------------------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-; Altera ; In-System Sources and Probes ; 13.1    ; N/A          ; N/A          ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst                                                            ; C:/Users/metel/QuartusProjects/v.1.0/MGF/SOURCE/source.v         ;
-; Altera ; FIFO                         ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1                                                     ; C:/Users/metel/QuartusProjects/v.1.0/MGF/FIFO/fifo_1kx16.v       ;
-; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_b ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
-; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_l ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
-; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_r ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
-; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_u ; C:/Users/metel/QuartusProjects/v.1.0/MGF/DIVIDER/divider_16.v    ;
-; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_13_mhz                                                       ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
-; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz                                                      ; C:/Users/metel/QuartusProjects/v.1.0/MGF/ALTCLKCTRL/global_buf.v ;
-; Altera ; ALTPLL                       ; 13.1    ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst                                                             ; C:/Users/metel/QuartusProjects/v.1.0/MGF/PLL/pll_40_mhz.v        ;
-+--------+------------------------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                                                                                                                       ;
++--------+------------------------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+; Vendor ; IP Core Name                 ; Version ; Release Date ; License Type ; Entity Instance                                                                                                               ; IP Include File                                                             ;
++--------+------------------------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
+; Altera ; In-System Sources and Probes ; 13.1    ; N/A          ; N/A          ; |student_top|parameter_ctrl:parameter_ctrl_inst|source:source_inst                                                            ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/SOURCE/source.v         ;
+; Altera ; FIFO                         ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|fifo_1kx16:fifo_1kx16_inst1                                                     ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/FIFO/fifo_1kx16.v       ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_b ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/DIVIDER/divider_16.v    ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_l ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/DIVIDER/divider_16.v    ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_r ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/DIVIDER/divider_16.v    ;
+; Altera ; LPM_DIVIDE                   ; 13.1    ; N/A          ; N/A          ; |student_top|student_block:student_block_inst|find_geometric_centers:find_geometric_centers_inst|divider_16:divider_16_inst_u ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/DIVIDER/divider_16.v    ;
+; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_13_mhz                                                       ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/ALTCLKCTRL/global_buf.v ;
+; Altera ; ALTCLKCTRL                   ; 9.1     ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|global_buf:global_buf_clk_108_mhz                                                      ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/ALTCLKCTRL/global_buf.v ;
+; Altera ; ALTPLL                       ; 13.1    ; N/A          ; N/A          ; |student_top|system_clock:sys_clk_inst|pll_40_mhz:pll_40_mhz_inst                                                             ; C:/Users/metel/QuartusProjects/Path_finder_FPGA/MGF/PLL/pll_40_mhz.v        ;
++--------+------------------------------+---------+--------------+--------------+-------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -1227,7 +1227,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+--------------+
 ; Partition Name   ; Elapsed Time ;
 +------------------+--------------+
-; Top              ; 00:00:05     ;
+; Top              ; 00:00:06     ;
 ; sld_hub:auto_hub ; 00:00:00     ;
 +------------------+--------------+
 
@@ -1238,37 +1238,37 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Jan 18 13:58:13 2018
+    Info: Processing started: Tue Apr 03 17:11:00 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off student -c student
 Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/fifo/fifo_1kx16.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/mgf/fifo/fifo_1kx16.v
     Info (12023): Found entity 1: fifo_1kx16
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/student_top.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/student_top.v
     Info (12023): Found entity 1: student_top
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/parameter_ctrl.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/parameter_ctrl.v
     Info (12023): Found entity 1: parameter_ctrl
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/system_clock.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/system_clock.v
     Info (12023): Found entity 1: system_clock
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/reset_generator.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/reset_generator.v
     Info (12023): Found entity 1: reset_generator
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/adc_controller.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/adc_controller.v
     Info (12023): Found entity 1: adc_controller
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/student_block.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/student_block.v
     Info (12023): Found entity 1: student_block
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/dac_controller.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/dac_controller.v
     Info (12023): Found entity 1: dac_controller
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/pll/pll_40_mhz.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/mgf/pll/pll_40_mhz.v
     Info (12023): Found entity 1: pll_40_mhz
-Info (12021): Found 2 design units, including 2 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/altclkctrl/global_buf.v
+Info (12021): Found 2 design units, including 2 entities, in source file /users/metel/quartusprojects/path_finder_fpga/mgf/altclkctrl/global_buf.v
     Info (12023): Found entity 1: global_buf_altclkctrl_uhi
     Info (12023): Found entity 2: global_buf
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/source/source.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/mgf/source/source.v
     Info (12023): Found entity 1: source
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/fifo/fifo_1kx32.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/mgf/fifo/fifo_1kx32.v
     Info (12023): Found entity 1: fifo_1kx32
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/mgf/divider/divider_16.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/mgf/divider/divider_16.v
     Info (12023): Found entity 1: divider_16
-Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/v.1.0/hdl/find_geometric_centers.v
+Info (12021): Found 1 design units, including 1 entities, in source file /users/metel/quartusprojects/path_finder_fpga/hdl/find_geometric_centers.v
     Info (12023): Found entity 1: find_geometric_centers
 Warning (10236): Verilog HDL Implicit Net warning at student_block.v(152): created implicit net for "fifo_wrreq"
 Warning (10236): Verilog HDL Implicit Net warning at student_block.v(153): created implicit net for "fifo_rdreq"
@@ -1447,7 +1447,7 @@ Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "sld_hub:auto_hub|receive[0][0]" is stuck at GND
-Info (144001): Generated suppressed messages file C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/student.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/student.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 3 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 1990 device resources after synthesis - the final resource count might be different
@@ -1457,15 +1457,15 @@ Info (21057): Implemented 1990 device resources after synthesis - the final reso
     Info (21064): Implemented 15 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 18 warnings
-    Info: Peak virtual memory: 643 megabytes
-    Info: Processing ended: Thu Jan 18 13:58:26 2018
+    Info: Peak virtual memory: 654 megabytes
+    Info: Processing ended: Tue Apr 03 17:11:13 2018
     Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:12
+    Info: Total CPU time (on all processors): 00:00:10
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/metel/QuartusProjects/v.1.0/SYSTEM/student.map.smsg.
+The suppressed messages can be found in C:/Users/metel/QuartusProjects/Path_finder_FPGA/SYSTEM/student.map.smsg.
 
 
